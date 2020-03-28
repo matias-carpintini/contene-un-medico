@@ -7,6 +7,8 @@ import SignIn from "./src/screens/auth/signin";
 import Feed from "./src/screens/feed";
 import UserProfile from "./src/screens/auth/profile";
 import EditUser from "./src/screens/auth/edit";
+import MedicProfile from "./src/screens/medics/profile";
+import Feedback from "./src/screens/feedback";
 
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -18,7 +20,9 @@ const Navigator = createStackNavigator(
     SignUp: SignUp,
     Feed: Feed,
     UserProfile: UserProfile,
-    EditUser: EditUser
+    EditUser: EditUser,
+    MedicProfile: MedicProfile,
+    Feedback: Feedback
   },
   {
     headerMode: "none"

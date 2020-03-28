@@ -1,5 +1,13 @@
 import React from "react";
-import { Image, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
 import { ProfileImg, TitleBar } from "../../styles/styled";
@@ -14,8 +22,8 @@ export default class UserProfileScreen extends React.Component {
     this.props.navigation.navigate("EditUser");
   };
 
-  logout = () => {
-    this.props.navigation.navigate("Welcome");
+  feedback = () => {
+    this.props.navigation.navigate("Feedback");
   };
 
   render() {
@@ -36,9 +44,14 @@ export default class UserProfileScreen extends React.Component {
               color={colors.gray}
             />
           </TouchableOpacity>
-          <Text style={styles.pageTitle}>Tu perfil</Text>
-          <TouchableOpacity onPress={this.edit}>
-            <SimpleLineIcon name="magic-wand" size={20} color={colors.gray} />
+          <Text style={styles.pageTitle}>
+            Adopción
+            {/* Perfil <= if not adopted */}
+          </Text>
+
+          {/* For unfollow: (remove onPress if are not adopted) */}
+          <TouchableOpacity onPress={this.feedback}>
+            <SimpleLineIcon name="user-unfollow" size={20} color={colors.gray} />
           </TouchableOpacity>
         </TitleBar>
 
@@ -53,12 +66,12 @@ export default class UserProfileScreen extends React.Component {
               }}
             >
               <Image
-                source={require("../../assets/images/matias.png")}
+                source={require("../../assets/images/jp.jpeg")}
                 style={{ width: 150, height: 150 }}
               />
             </ProfileImg>
             <View style={{ alignItems: "center" }}>
-              <Text style={styles.cardDetailsTitle}>Matias Carpintini</Text>
+              <Text style={styles.cardDetailsTitle}>Juan Pablo Villani</Text>
             </View>
             <View
               style={{
@@ -67,15 +80,14 @@ export default class UserProfileScreen extends React.Component {
                 paddingHorizontal: 22
               }}
             >
-              <Text style={styles.dateReference}>Número de teléfono</Text>
-              <Text style={styles.dateDetails}>+54 11-22544456</Text>
-
-              <Text style={styles.dateReference}>Correo electrónico</Text>
-              <Text style={styles.dateDetails}>carpintinimatias@gmail.com</Text>
-
-              <Text style={styles.dateReference}>Domicilio</Text>
+              <Text style={styles.dateReference}>Lugar de trabajo</Text>
               <Text style={styles.dateDetails}>
-                Bolivar 1054, San Telmo, Buenos Aires, Argentina.
+                Hospital Naval "Dr. Pedro Mallo"
+              </Text>
+
+              <Text style={styles.dateReference}>Puesto/rol</Text>
+              <Text style={styles.dateDetails}>
+                Administrador de lavandería de hospital
               </Text>
 
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
@@ -110,7 +122,8 @@ export default class UserProfileScreen extends React.Component {
 
               {/* If medic, complete here... */}
 
-              <TouchableOpacity
+              {/* If !adopted */}
+              {/* <TouchableOpacity
                 style={[
                   styles.signUpButton,
                   {
@@ -120,7 +133,7 @@ export default class UserProfileScreen extends React.Component {
                     marginTop: 20
                   }
                 ]}
-                onPress={this.logout}
+                onPress={this.adopt}
               >
                 <Text
                   style={{
@@ -130,7 +143,52 @@ export default class UserProfileScreen extends React.Component {
                     color: colors.white
                   }}
                 >
-                  Cerrar sesión
+                  Adoptar
+                </Text>
+              </TouchableOpacity> */}
+              <TouchableOpacity
+                style={[
+                  styles.signUpButton,
+                  {
+                    backgroundColor: colors.blue,
+                    width: "100%",
+                    paddingHorizontal: 20,
+                    marginTop: 20
+                  }
+                ]}
+                onPress={this.adopt}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Kastelov--Axiforma-Medium",
+                    textAlign: "center",
+                    fontSize: 12,
+                    color: colors.white
+                  }}
+                >
+                  Llamar por teléfono
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.signUpButton,
+                  {
+                    backgroundColor: colors.green,
+                    width: "100%",
+                    paddingHorizontal: 20,
+                    marginTop: 10
+                  }
+                ]}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Kastelov--Axiforma-Medium",
+                    textAlign: "center",
+                    fontSize: 12,
+                    color: colors.white
+                  }}
+                >
+                  Hablar por WhatsApp
                 </Text>
               </TouchableOpacity>
             </View>
