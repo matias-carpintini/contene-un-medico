@@ -46,10 +46,10 @@ export default class UserProfileScreen extends React.Component {
           </TouchableOpacity>
           <Text style={styles.pageTitle}>
             Adopción
-            {/* Perfil <= if not adopted */}
+            {/* Perfil <= if not contained */}
           </Text>
 
-          {/* For unfollow: (remove onPress if are not adopted) */}
+          {/* For unfollow: (remove onPress if are not contained) */}
           <TouchableOpacity onPress={this.feedback}>
             <SimpleLineIcon name="user-unfollow" size={20} color={colors.gray} />
           </TouchableOpacity>
@@ -122,7 +122,7 @@ export default class UserProfileScreen extends React.Component {
 
               {/* If medic, complete here... */}
 
-              {/* If !adopted */}
+              {/* If !contained */}
               {/* <TouchableOpacity
                 style={[
                   styles.signUpButton,
@@ -133,7 +133,7 @@ export default class UserProfileScreen extends React.Component {
                     marginTop: 20
                   }
                 ]}
-                onPress={this.adopt}
+                onPress={this.contain}
               >
                 <Text
                   style={{
@@ -143,7 +143,7 @@ export default class UserProfileScreen extends React.Component {
                     color: colors.white
                   }}
                 >
-                  Adoptar
+                  Contener
                 </Text>
               </TouchableOpacity> */}
               <TouchableOpacity
@@ -156,7 +156,7 @@ export default class UserProfileScreen extends React.Component {
                     marginTop: 20
                   }
                 ]}
-                onPress={this.adopt}
+                onPress={this.contain}
               >
                 <Text
                   style={{

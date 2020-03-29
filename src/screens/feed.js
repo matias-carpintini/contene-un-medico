@@ -184,7 +184,7 @@ export default class FeedScreen extends React.Component {
 
     const medic = (
       <View>
-        {/* If adopted: */}
+        {/* If contained: */}
         {/* <View style={styles.cardDetails}>
           <ProfileImg
             style={{
@@ -257,7 +257,7 @@ export default class FeedScreen extends React.Component {
                   marginTop: 20
                 }
               ]}
-              onPress={this.adopt}
+              onPress={this.contain}
             >
               <Text
                 style={{

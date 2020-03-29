@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Adopta un médico",
-    "slug": "adoptaunmedico",
+    "name": "Contené un médico",
+    "slug": "conteneunmedico",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
