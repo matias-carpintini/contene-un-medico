@@ -14,18 +14,14 @@ import {
 import colors from "../../styles/colors";
 import styles from "../../styles/styles";
 
-export default class SignInScreen extends React.Component {
-  continue = () => {
-    this.props.navigation.navigate("Feed");
+export default class MedicSignInScreen extends React.Component {
+  submit = () => {
+    this.props.navigation.navigate("MedicFeed");
   };
 
   signup = () => {
-    this.props.navigation.navigate("SignUp");
+    this.props.navigation.navigate("MedicSignUp");
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
@@ -115,7 +111,7 @@ export default class SignInScreen extends React.Component {
                     styles.signUpButton,
                     { marginTop: 40, backgroundColor: colors.green }
                   ]}
-                  onPress={this.continue}
+                  onPress={this.submit}
                 >
                   <Text
                     style={{

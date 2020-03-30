@@ -1,28 +1,44 @@
 import React from 'react';
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+
+// Common
+import Question from "./src/screens/question";
 import Welcome from "./src/screens/welcome";
-import SignUp from "./src/screens/auth/signup";
-import SignIn from "./src/screens/auth/signin";
-import Feed from "./src/screens/feed";
-import UserProfile from "./src/screens/auth/profile";
-import EditUser from "./src/screens/auth/edit";
-import MedicProfile from "./src/screens/medics/profile";
 import Feedback from "./src/screens/feedback";
+
+// Volunteers
+import VolunteerSignUp from "./src/screens/volunteers/signup";
+import VolunteerSignIn from "./src/screens/volunteers/signin";
+import VolunteerFeed from "./src/screens/volunteers/feed";
+import VolunteerProfile from "./src/screens/volunteers/profile";
+import VolunteerEdit from "./src/screens/volunteers/edit";
+
+// Medic
+import MedicSignUp from "./src/screens/volunteers/signup";
+import MedicSignIn from "./src/screens/volunteers/signin";
+import MedicFeed from "./src/screens/volunteers/feed";
+import MedicProfile from "./src/screens/medics/profile";
+import MedicEdit from "./src/screens/volunteers/edit";
 
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
 const Navigator = createStackNavigator(
   {
+    Question: Question,
     Welcome: Welcome,
-    SignIn: SignIn,
-    SignUp: SignUp,
-    Feed: Feed,
-    UserProfile: UserProfile,
-    EditUser: EditUser,
+    Feedback: Feedback,
+    VolunteerSignUp: VolunteerSignUp,
+    VolunteerSignIn: VolunteerSignIn,
+    VolunteerFeed: VolunteerFeed,
+    VolunteerProfile: VolunteerProfile,
+    VolunteerEdit: VolunteerEdit,
+    MedicSignUp: MedicSignUp,
+    MedicSignIn: MedicSignIn,
+    MedicFeed: MedicFeed,
     MedicProfile: MedicProfile,
-    Feedback: Feedback
+    MedicEdit: MedicEdit
   },
   {
     headerMode: "none"

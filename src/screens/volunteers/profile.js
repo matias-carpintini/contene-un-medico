@@ -5,13 +5,13 @@ import colors from "../../styles/colors";
 import { ProfileImg, TitleBar } from "../../styles/styled";
 import styles from "../../styles/styles";
 
-export default class UserProfileScreen extends React.Component {
+export default class VolunteerProfileScreen extends React.Component {
   back = () => {
-    this.props.navigation.navigate("Feed");
+    this.props.navigation.navigate("VolunteerFeed");
   };
 
   edit = () => {
-    this.props.navigation.navigate("EditUser");
+    this.props.navigation.navigate("VolunteerEdit");
   };
 
   logout = () => {
@@ -36,7 +36,7 @@ export default class UserProfileScreen extends React.Component {
               color={colors.gray}
             />
           </TouchableOpacity>
-          <Text style={styles.pageTitle}>Tu perfil</Text>
+          <Text style={styles.pageTitle}>Perfil</Text>
           <TouchableOpacity onPress={this.edit}>
             <SimpleLineIcon name="magic-wand" size={20} color={colors.gray} />
           </TouchableOpacity>
@@ -107,8 +107,6 @@ export default class UserProfileScreen extends React.Component {
                   <Text style={styles.dateDetails}>Hombre</Text>
                 </View>
               </View>
-
-              {/* If medic, complete here... */}
 
               <TouchableOpacity
                 style={[

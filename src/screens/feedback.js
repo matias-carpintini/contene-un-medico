@@ -1,27 +1,21 @@
 import React from "react";
 import {
   Image,
-  Picker,
+  KeyboardAvoidingView,
   SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
-  CheckBox,
-  KeyboardAvoidingView
+  View
 } from "react-native";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../styles/colors";
-import { ProfileImg, TitleBar, IconIndicatorC } from "../styles/styled";
+import { IconIndicatorC, TitleBar } from "../styles/styled";
 import styles from "../styles/styles";
 
-export default class FeedbaclScreen extends React.Component {
-  constructor() {
-    super();
-  }
-
+export default class FeedbackScreen extends React.Component {
   back = () => {
     this.props.navigation.navigate("Feed");
   };

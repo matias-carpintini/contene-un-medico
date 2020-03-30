@@ -1,8 +1,7 @@
 import React from "react";
 import {
   Image,
-  KeyboardAvoidingView,
-  Platform,
+  Picker,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -10,172 +9,67 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Picker,
-  CheckBox
+  CheckBox,
+  KeyboardAvoidingView
 } from "react-native";
-import { ProfileImg } from "../../styles/styled";
-import styles from "../../styles/styles";
+import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
+import { ProfileImg, TitleBar } from "../../styles/styled";
+import styles from "../../styles/styles";
 
-export default class SignUpScreen extends React.Component {
-  constructor() {
-    super();
-
-    this.state = { checked: false };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange() {
-    this.setState({
-      checked: !this.state.checked
-    });
-  }
-
-  continue = () => {
-    this.props.navigation.navigate("Feed");
+export default class VolunteerProfileEditScreen extends React.Component {
+  back = () => {
+    this.props.navigation.navigate("VolunteerProfile");
   };
 
-  signup = () => {
-    this.props.navigation.navigate("SignUp");
+  submit = () => {
+    this.props.navigation.navigate("VolunteerProfile");
   };
 
   render() {
-    const medic = this.state.checked ? (
-      <View style={{ alignItems: "center", flex: 1, width: "100%" }}>
-        <TextInput
-          placeholderTextColor={colors.darkWhite}
-          style={[styles.loginInput, { backgroundColor: colors.smoke }]}
-          placeholder="Lugar de trabajo"
-        />
-        <TextInput
-          placeholderTextColor={colors.darkWhite}
-          style={[styles.loginInput, { backgroundColor: colors.smoke }]}
-          placeholder="Puesto/rol"
-        />
-        <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
-          <View style={{ flex: 1 }}>
-            <TextInput
-              placeholderTextColor={colors.darkWhite}
-              style={[
-                styles.loginInput,
-                { backgroundColor: colors.smoke, width: "90%" }
-              ]}
-              placeholder="Estado civil"
-            />
-          </View>
-          <View style={{ flex: 1 }}>
-            <TextInput
-              placeholderTextColor={colors.darkWhite}
-              style={[
-                styles.loginInput,
-                { backgroundColor: colors.smoke, width: "100%" }
-              ]}
-              placeholder="Hijos"
-            />
-          </View>
-        </View>
-        <TextInput
-          placeholderTextColor={colors.darkWhite}
-          style={[styles.loginInput, { backgroundColor: colors.smoke }]}
-          placeholder="Nro de personas con las que convive"
-        />
-        <TextInput
-          placeholderTextColor={colors.darkWhite}
-          style={[styles.loginInput, { backgroundColor: colors.smoke }]}
-          placeholder="Personas a cargo"
-        />
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "flex-start",
-            width: "90%",
-            marginTop: 10
-          }}
-        >
-          <CheckBox />
-          <Text
-            style={{
-              fontSize: 13,
-              fontFamily: "Kastelov--Axiforma-Bold",
-              color: colors.lightGray,
-              marginTop: 7
-            }}
-          >
-            En tratamiento por salud mental
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignContent: "flex-start",
-            width: "90%",
-            marginTop: 10
-          }}
-        >
-          <CheckBox />
-          <Text
-            style={{
-              fontSize: 13,
-              fontFamily: "Kastelov--Axiforma-Bold",
-              color: colors.lightGray,
-              marginTop: 7
-            }}
-          >
-            Medicación previa
-          </Text>
-        </View>
-      </View>
-    ) : null;
-
     return (
-      <SafeAreaView style={{ backgroundColor: colors.smoke, flex: 1 }}>
-        <StatusBar backgroundColor={colors.smoke} barStyle="dark-content" />
-
-        <View
-          style={{
-            height: "20%",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <Image
-            source={require("../../assets/images/aquiestoy.png")}
-            style={{ resizeMode: "contain", width: 130, height: 130 }}
-          />
-
-          <Text
-            style={{
-              alignSelf: "center",
-              fontFamily: "Kastelov--Axiforma-Bold",
-              fontSize: 13,
-              marginTop: -40,
-              color: colors.lightGray
-            }}
-          >
-            Crea tu cuenta, ¡es fácil!
-          </Text>
-        </View>
+      <SafeAreaView
+        style={{
+          backgroundColor: colors.white,
+          flexDirection: "column",
+          flex: 1
+        }}
+      >
         <KeyboardAvoidingView
           behavior={Platform.select({ android: "height", ios: "padding" })}
           style={{ flex: 1 }}
         >
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: colors.white,
-              margin: 0,
-              marginBottom: 0,
-              borderTopStartRadius: 80,
-              borderTopEndRadius: 80,
-              flex: 1
-            }}
-          >
-            <ScrollView horizontal={false}>
-              <View style={{ alignItems: "center", flex: 1 }}>
-                <ProfileImg style={{ marginTop: 30 }} />
+          <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
+          <TitleBar style={{ marginBottom: 10, alignItems: "center" }}>
+            <TouchableOpacity onPress={this.back}>
+              <SimpleLineIcon
+                name="arrow-left-circle"
+                size={20}
+                color={colors.gray}
+              />
+            </TouchableOpacity>
+            <Text style={styles.pageTitle}>Editar perfil</Text>
+            <SimpleLineIcon name="magic-wand" size={20} color={colors.gray} />
+          </TitleBar>
+
+          <ScrollView>
+            <View style={styles.cardDetails}>
+              <ProfileImg
+                style={{
+                  marginTop: 30,
+                  backgroundColor: colors.lightBlue,
+                  width: 150,
+                  height: 150
+                }}
+              >
+                <Image
+                  source={require("../../assets/images/matias.png")}
+                  style={{ width: 150, height: 150 }}
+                />
+              </ProfileImg>
+              <View style={{ alignItems: "center" }}>
                 <Text
                   style={{
-                    marginBottom: -60,
                     marginTop: 20,
                     fontFamily: "Kastelov--Axiforma-Bold",
                     fontSize: 18
@@ -183,49 +77,55 @@ export default class SignUpScreen extends React.Component {
                 >
                   Foto de perfil
                 </Text>
+              </View>
 
+              <View
+                style={{
+                  alignItems: "flex-start",
+                  marginVertical: 10,
+                  paddingHorizontal: 22
+                }}
+              >
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { marginTop: 80, backgroundColor: colors.smoke }
+                    { marginTop: 20, backgroundColor: colors.white, width: "100%" }
                   ]}
                   placeholder="Nombre y Apellido"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
                   placeholder="Correo electrónico"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
                   placeholder="Domicilio"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
                   placeholder="Teléfono de contacto"
                 ></TextInput>
 
                 <View
                   style={{
                     marginTop: 20,
-                    width: "90%",
+                    width: "100%",
                     justifyContent: "center",
-                    backgroundColor: colors.smoke,
+                    backgroundColor: colors.white,
                     borderRadius: 10,
                     height: 48
                   }}
                 >
                   <Picker
                     placeholder="Nacionalidad"
-                    selectedValue={
-                      (this.state && this.state.pickerValue) || "a"
-                    }
+                    selectedValue={(this.state && this.state.pickerValue) || "a"}
                     onValueChange={value => {
                       this.setState({ pickerValue: value });
                     }}
@@ -242,10 +142,7 @@ export default class SignUpScreen extends React.Component {
                       label="Antigua y Barbuda"
                       value="Antigua y Barbuda"
                     />
-                    <Picker.Item
-                      label="Arabia Saudita"
-                      value="Arabia Saudita"
-                    />
+                    <Picker.Item label="Arabia Saudita" value="Arabia Saudita" />
                     <Picker.Item label="Argentina" value="Argentina" />
                     <Picker.Item label="Armenia" value="Armenia" />
                     <Picker.Item label="Aruba" value="Aruba" />
@@ -371,20 +268,14 @@ export default class SignUpScreen extends React.Component {
                     />
                     <Picker.Item label="Isla Norfolk" value="Isla Norfolk" />
                     <Picker.Item label="Islandia" value="Islandia" />
-                    <Picker.Item
-                      label="Islas Bermudas"
-                      value="Islas Bermudas"
-                    />
+                    <Picker.Item label="Islas Bermudas" value="Islas Bermudas" />
                     <Picker.Item label="Islas Caimán" value="Islas Caimán" />
                     <Picker.Item
                       label="Islas Cocos (Keeling)"
                       value="Islas Cocos (Keeling)"
                     />
                     <Picker.Item label="Islas Cook" value="Islas Cook" />
-                    <Picker.Item
-                      label="Islas de Åland"
-                      value="Islas de Åland"
-                    />
+                    <Picker.Item label="Islas de Åland" value="Islas de Åland" />
                     <Picker.Item label="Islas Feroe" value="Islas Feroe" />
                     <Picker.Item
                       label="Islas Georgias del Sur y Sandwich del Sur"
@@ -394,26 +285,14 @@ export default class SignUpScreen extends React.Component {
                       label="Islas Heard y McDonald"
                       value="Islas Heard y McDonald"
                     />
-                    <Picker.Item
-                      label="Islas Maldivas"
-                      value="Islas Maldivas"
-                    />
-                    <Picker.Item
-                      label="Islas Malvinas"
-                      value="Islas Malvinas"
-                    />
+                    <Picker.Item label="Islas Maldivas" value="Islas Maldivas" />
+                    <Picker.Item label="Islas Malvinas" value="Islas Malvinas" />
                     <Picker.Item
                       label="Islas Marianas del Norte"
                       value="Islas Marianas del Norte"
                     />
-                    <Picker.Item
-                      label="Islas Marshall"
-                      value="Islas Marshall"
-                    />
-                    <Picker.Item
-                      label="Islas Pitcairn"
-                      value="Islas Pitcairn"
-                    />
+                    <Picker.Item label="Islas Marshall" value="Islas Marshall" />
+                    <Picker.Item label="Islas Pitcairn" value="Islas Pitcairn" />
                     <Picker.Item label="Islas Salomón" value="Islas Salomón" />
                     <Picker.Item
                       label="Islas Turcas y Caicos"
@@ -589,10 +468,7 @@ export default class SignUpScreen extends React.Component {
                       label="Territorios Australes y Antárticas Franceses"
                       value="Territorios Australes y Antárticas Franceses"
                     />
-                    <Picker.Item
-                      label="Timor Oriental"
-                      value="Timor Oriental"
-                    />
+                    <Picker.Item label="Timor Oriental" value="Timor Oriental" />
                     <Picker.Item label="Togo" value="Togo" />
                     <Picker.Item label="Tokelau" value="Tokelau" />
                     <Picker.Item label="Tonga" value="Tonga" />
@@ -625,18 +501,16 @@ export default class SignUpScreen extends React.Component {
                 <View
                   style={{
                     marginTop: 20,
-                    width: "90%",
+                    width: "100%",
                     justifyContent: "center",
-                    backgroundColor: colors.smoke,
+                    backgroundColor: colors.white,
                     borderRadius: 10,
                     height: 48
                   }}
                 >
                   <Picker
                     placeholder="Idioma"
-                    selectedValue={
-                      (this.state && this.state.pickerValue) || "a"
-                    }
+                    selectedValue={(this.state && this.state.pickerValue) || "a"}
                     onValueChange={value => {
                       this.setState({ pickerValue: value });
                     }}
@@ -685,25 +559,23 @@ export default class SignUpScreen extends React.Component {
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
                   placeholder="Nivel de estudio"
                 ></TextInput>
 
                 <View
                   style={{
                     marginTop: 20,
-                    width: "90%",
+                    width: "100%",
                     justifyContent: "center",
-                    backgroundColor: colors.smoke,
+                    backgroundColor: colors.white,
                     borderRadius: 10,
                     height: 48
                   }}
                 >
                   <Picker
                     placeholder="Profesión"
-                    selectedValue={
-                      (this.state && this.state.pickerValue) || "a"
-                    }
+                    selectedValue={(this.state && this.state.pickerValue) || "a"}
                     onValueChange={value => {
                       this.setState({ pickerValue: value });
                     }}
@@ -740,13 +612,13 @@ export default class SignUpScreen extends React.Component {
                   </Picker>
                 </View>
 
-                <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
+                <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
                   <View style={{ flex: 1 }}>
                     <TextInput
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.smoke }
+                        { backgroundColor: colors.white }
                       ]}
                       placeholder="Edad"
                     ></TextInput>
@@ -756,7 +628,8 @@ export default class SignUpScreen extends React.Component {
                       style={{
                         marginTop: 20,
                         justifyContent: "center",
-                        backgroundColor: colors.smoke,
+                        width: "100%",
+                        backgroundColor: colors.white,
                         borderRadius: 10,
                         height: 48
                       }}
@@ -780,64 +653,39 @@ export default class SignUpScreen extends React.Component {
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
                   secureTextEntry={true}
-                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
                   placeholder="Contraseña"
                   collapsable={true}
                 ></TextInput>
 
-                <View
-                  style={{ flexDirection: "row", marginTop: 10, width: "90%" }}
-                >
-                  <CheckBox
-                    value={this.state.checked}
-                    onValueChange={this.handleChange}
-                  />
-                  <Text
-                    style={{
-                      fontSize: 13,
-                      fontFamily: "Kastelov--Axiforma-Bold",
-                      color: colors.lightGray,
-                      marginTop: 7
-                    }}
+                <View>
+                  <TouchableOpacity
+                    style={[
+                      styles.signUpButton,
+                      {
+                        backgroundColor: colors.green,
+                        width: "auto",
+                        paddingHorizontal: 20,
+                        marginTop: 20
+                      }
+                    ]}
+                    onPress={this.submit}
                   >
-                    Soy un médico
-                  </Text>
+                    <Text
+                      style={{
+                        fontFamily: "Kastelov--Axiforma-Bold",
+                        textAlign: "center",
+                        fontSize: 15,
+                        color: colors.white
+                      }}
+                    >
+                      Guardar cambios
+                    </Text>
+                  </TouchableOpacity>
                 </View>
-
-                {medic}
-
-                <Text
-                  style={{
-                    fontFamily: "Kastelov--Axiforma-Bold",
-                    color: colors.darkWhite,
-                    marginTop: 30
-                  }}
-                >
-                  Acepto los{" "}
-                  <Text style={{ color: colors.gray }}>
-                    términos y condiciones
-                  </Text>
-                </Text>
-
-                <TouchableOpacity
-                  style={[styles.signUpButton, { marginBottom: 30 }]}
-                  onPress={this.continue}
-                >
-                  <Text
-                    style={{
-                      fontFamily: "Kastelov--Axiforma-Bold",
-                      color: "white",
-                      textAlign: "center",
-                      fontSize: 15,
-                      color: colors.white
-                    }}
-                  >
-                    Crear cuenta
-                  </Text>
-                </TouchableOpacity>
               </View>
-            </ScrollView>
-          </View>
+            </View>
+          </ScrollView>
         </KeyboardAvoidingView>
       </SafeAreaView>
     );

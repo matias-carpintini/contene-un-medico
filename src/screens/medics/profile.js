@@ -13,9 +13,9 @@ import colors from "../../styles/colors";
 import { ProfileImg, TitleBar } from "../../styles/styled";
 import styles from "../../styles/styles";
 
-export default class UserProfileScreen extends React.Component {
+export default class MedicProfileScreen extends React.Component {
   back = () => {
-    this.props.navigation.navigate("Feed");
+    this.props.navigation.navigate("MedicFeed");
   };
 
   edit = () => {
@@ -44,14 +44,15 @@ export default class UserProfileScreen extends React.Component {
               color={colors.gray}
             />
           </TouchableOpacity>
-          <Text style={styles.pageTitle}>
-            Adopción
-            {/* Perfil <= if not contained */}
-          </Text>
+          <Text style={styles.pageTitle}>Perfil</Text>
 
-          {/* For unfollow: (remove onPress if are not contained) */}
+          {/* For unfollow: (remove onPress if are not contained, change for edit) */}
           <TouchableOpacity onPress={this.feedback}>
-            <SimpleLineIcon name="user-unfollow" size={20} color={colors.gray} />
+            <SimpleLineIcon
+              name="user-unfollow"
+              size={20}
+              color={colors.gray}
+            />
           </TouchableOpacity>
         </TitleBar>
 
@@ -120,7 +121,100 @@ export default class UserProfileScreen extends React.Component {
                 </View>
               </View>
 
-              {/* If medic, complete here... */}
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  { backgroundColor: colors.white, width: "100%" }
+                ]}
+                placeholder="Lugar de trabajo"
+              />
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  { backgroundColor: colors.white, width: "100%" }
+                ]}
+                placeholder="Puesto/rol"
+              />
+              <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
+                <View style={{ flex: 1 }}>
+                  <TextInput
+                    placeholderTextColor={colors.darkWhite}
+                    style={[
+                      styles.loginInput,
+                      { backgroundColor: colors.white }
+                    ]}
+                    placeholder="Estado civil"
+                  />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <TextInput
+                    placeholderTextColor={colors.darkWhite}
+                    style={[
+                      styles.loginInput,
+                      { backgroundColor: colors.white, width: "100%" }
+                    ]}
+                    placeholder="Hijos"
+                  />
+                </View>
+              </View>
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  { backgroundColor: colors.white, width: "100%" }
+                ]}
+                placeholder="Nro de personas con las que convive"
+              />
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  { backgroundColor: colors.white, width: "100%" }
+                ]}
+                placeholder="Personas a cargo"
+              />
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "flex-start",
+                  width: "100%",
+                  marginTop: 10
+                }}
+              >
+                <CheckBox />
+                <Text
+                  style={{
+                    fontSize: 13,
+                    fontFamily: "Kastelov--Axiforma-Bold",
+                    color: colors.lightGray,
+                    marginTop: 7
+                  }}
+                >
+                  En tratamiento por salud mental
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignContent: "flex-start",
+                  width: "100%",
+                  marginTop: 10
+                }}
+              >
+                <CheckBox />
+                <Text
+                  style={{
+                    fontSize: 13,
+                    fontFamily: "Kastelov--Axiforma-Bold",
+                    color: colors.lightGray,
+                    marginTop: 7
+                  }}
+                >
+                  Medicación previa
+                </Text>
+              </View>
 
               {/* If !contained */}
               {/* <TouchableOpacity

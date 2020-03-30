@@ -12,12 +12,12 @@ import styles from "../styles/styles";
 import colors from "../styles/colors";
 
 export default class WelcomeScreen extends React.Component {
-  signin = () => {
-    this.props.navigation.navigate("SignIn");
+  volunteerSignIn = () => {
+    this.props.navigation.navigate("VolunteerSignIn");
   };
 
-  signup = () => {
-    this.props.navigation.navigate("SignUp");
+  volunteerSignUp = () => {
+    this.props.navigation.navigate("VolunteerSignUp");
   };
 
   constructor(props) {
@@ -104,7 +104,7 @@ export default class WelcomeScreen extends React.Component {
               </Text>
               <TouchableOpacity
                 style={[styles.loginButton]}
-                onPress={this.signin}
+                onPress={this.volunteerSignIn}
               >
                 <Text
                   style={{
@@ -135,7 +135,7 @@ export default class WelcomeScreen extends React.Component {
             >
               ó
             </Text>
-            <TouchableOpacity onPress={this.signup}>
+            <TouchableOpacity onPress={this.volunteerSignUp}>
               <Text
                 style={{
                   marginTop: 0,

@@ -1,7 +1,8 @@
 import React from "react";
 import {
   Image,
-  Picker,
+  KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -9,165 +10,72 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  CheckBox,
-  KeyboardAvoidingView
+  Picker,
+  CheckBox
 } from "react-native";
-import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
-import colors from "../../styles/colors";
-import { ProfileImg, TitleBar } from "../../styles/styled";
+import { ProfileImg } from "../../styles/styled";
 import styles from "../../styles/styles";
+import colors from "../../styles/colors";
 
-export default class EditProfileScreen extends React.Component {
-  constructor() {
-    super();
+export default class MedicSignUpScreen extends React.Component {
+  submit = () => {
+    this.props.navigation.navigate("MedicFeed");
+  };
 
-    this.state = { checked: false };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange() {
-    this.setState({
-      checked: !this.state.checked
-    });
-  }
-
-  back = () => {
-    this.props.navigation.navigate("UserProfile");
+  medicSignUp = () => {
+    this.props.navigation.navigate("MedicSignUp");
   };
 
   render() {
-    const medic = this.state.checked ? (
-      <View style={{ alignItems: "center", flex: 1, width: "100%" }}>
-        <TextInput
-          placeholderTextColor={colors.darkWhite}
-          style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
-          placeholder="Lugar de trabajo"
-        />
-        <TextInput
-          placeholderTextColor={colors.darkWhite}
-          style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
-          placeholder="Puesto/rol"
-        />
-        <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
-          <View style={{ flex: 1 }}>
-            <TextInput
-              placeholderTextColor={colors.darkWhite}
-              style={[
-                styles.loginInput,
-                { backgroundColor: colors.white }
-              ]}
-              placeholder="Estado civil"
-            />
-          </View>
-          <View style={{ flex: 1 }}>
-            <TextInput
-              placeholderTextColor={colors.darkWhite}
-              style={[
-                styles.loginInput,
-                { backgroundColor: colors.white, width: "100%" }
-              ]}
-              placeholder="Hijos"
-            />
-          </View>
-        </View>
-        <TextInput
-          placeholderTextColor={colors.darkWhite}
-          style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
-          placeholder="Nro de personas con las que convive"
-        />
-        <TextInput
-          placeholderTextColor={colors.darkWhite}
-          style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
-          placeholder="Personas a cargo"
-        />
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "flex-start",
-            width: "100%",
-            marginTop: 10
-          }}
-        >
-          <CheckBox />
-          <Text
-            style={{
-              fontSize: 13,
-              fontFamily: "Kastelov--Axiforma-Bold",
-              color: colors.lightGray,
-              marginTop: 7
-            }}
-          >
-            En tratamiento por salud mental
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignContent: "flex-start",
-            width: "100%",
-            marginTop: 10
-          }}
-        >
-          <CheckBox />
-          <Text
-            style={{
-              fontSize: 13,
-              fontFamily: "Kastelov--Axiforma-Bold",
-              color: colors.lightGray,
-              marginTop: 7
-            }}
-          >
-            Medicación previa
-          </Text>
-        </View>
-      </View>
-    ) : null;
-
     return (
-      <SafeAreaView
-        style={{
-          backgroundColor: colors.white,
-          flexDirection: "column",
-          flex: 1
-        }}
-      >
+      <SafeAreaView style={{ backgroundColor: colors.smoke, flex: 1 }}>
+        <StatusBar backgroundColor={colors.smoke} barStyle="dark-content" />
+
+        <View
+          style={{
+            height: "20%",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <Image
+            source={require("../../assets/images/aquiestoy.png")}
+            style={{ resizeMode: "contain", width: 130, height: 130 }}
+          />
+
+          <Text
+            style={{
+              alignSelf: "center",
+              fontFamily: "Kastelov--Axiforma-Bold",
+              fontSize: 13,
+              marginTop: -40,
+              color: colors.lightGray
+            }}
+          >
+            Crea tu cuenta, ¡es fácil!
+          </Text>
+        </View>
         <KeyboardAvoidingView
           behavior={Platform.select({ android: "height", ios: "padding" })}
           style={{ flex: 1 }}
         >
-          <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
-          <TitleBar style={{ marginBottom: 10, alignItems: "center" }}>
-            <TouchableOpacity onPress={this.back}>
-              <SimpleLineIcon
-                name="arrow-left-circle"
-                size={20}
-                color={colors.gray}
-              />
-            </TouchableOpacity>
-            <Text style={styles.pageTitle}>Tu perfil</Text>
-            <TouchableOpacity onPress={this.edit}>
-              <SimpleLineIcon name="magic-wand" size={20} color={colors.gray} />
-            </TouchableOpacity>
-          </TitleBar>
-
-          <ScrollView>
-            <View style={styles.cardDetails}>
-              <ProfileImg
-                style={{
-                  marginTop: 30,
-                  backgroundColor: colors.lightBlue,
-                  width: 150,
-                  height: 150
-                }}
-              >
-                <Image
-                  source={require("../../assets/images/matias.png")}
-                  style={{ width: 150, height: 150 }}
-                />
-              </ProfileImg>
-              <View style={{ alignItems: "center" }}>
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: colors.white,
+              margin: 0,
+              marginBottom: 0,
+              borderTopStartRadius: 80,
+              borderTopEndRadius: 80,
+              flex: 1
+            }}
+          >
+            <ScrollView horizontal={false}>
+              <View style={{ alignItems: "center", flex: 1 }}>
+                <ProfileImg style={{ marginTop: 30 }} />
                 <Text
                   style={{
+                    marginBottom: -60,
                     marginTop: 20,
                     fontFamily: "Kastelov--Axiforma-Bold",
                     fontSize: 18
@@ -175,55 +83,49 @@ export default class EditProfileScreen extends React.Component {
                 >
                   Foto de perfil
                 </Text>
-              </View>
 
-              <View
-                style={{
-                  alignItems: "flex-start",
-                  marginVertical: 10,
-                  paddingHorizontal: 22
-                }}
-              >
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { marginTop: 20, backgroundColor: colors.white, width: "100%" }
+                    { marginTop: 80, backgroundColor: colors.smoke }
                   ]}
                   placeholder="Nombre y Apellido"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Correo electrónico"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Domicilio"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Teléfono de contacto"
                 ></TextInput>
 
                 <View
                   style={{
                     marginTop: 20,
-                    width: "100%",
+                    width: "90%",
                     justifyContent: "center",
-                    backgroundColor: colors.white,
+                    backgroundColor: colors.smoke,
                     borderRadius: 10,
                     height: 48
                   }}
                 >
                   <Picker
                     placeholder="Nacionalidad"
-                    selectedValue={(this.state && this.state.pickerValue) || "a"}
+                    selectedValue={
+                      (this.state && this.state.pickerValue) || "a"
+                    }
                     onValueChange={value => {
                       this.setState({ pickerValue: value });
                     }}
@@ -240,7 +142,10 @@ export default class EditProfileScreen extends React.Component {
                       label="Antigua y Barbuda"
                       value="Antigua y Barbuda"
                     />
-                    <Picker.Item label="Arabia Saudita" value="Arabia Saudita" />
+                    <Picker.Item
+                      label="Arabia Saudita"
+                      value="Arabia Saudita"
+                    />
                     <Picker.Item label="Argentina" value="Argentina" />
                     <Picker.Item label="Armenia" value="Armenia" />
                     <Picker.Item label="Aruba" value="Aruba" />
@@ -366,14 +271,20 @@ export default class EditProfileScreen extends React.Component {
                     />
                     <Picker.Item label="Isla Norfolk" value="Isla Norfolk" />
                     <Picker.Item label="Islandia" value="Islandia" />
-                    <Picker.Item label="Islas Bermudas" value="Islas Bermudas" />
+                    <Picker.Item
+                      label="Islas Bermudas"
+                      value="Islas Bermudas"
+                    />
                     <Picker.Item label="Islas Caimán" value="Islas Caimán" />
                     <Picker.Item
                       label="Islas Cocos (Keeling)"
                       value="Islas Cocos (Keeling)"
                     />
                     <Picker.Item label="Islas Cook" value="Islas Cook" />
-                    <Picker.Item label="Islas de Åland" value="Islas de Åland" />
+                    <Picker.Item
+                      label="Islas de Åland"
+                      value="Islas de Åland"
+                    />
                     <Picker.Item label="Islas Feroe" value="Islas Feroe" />
                     <Picker.Item
                       label="Islas Georgias del Sur y Sandwich del Sur"
@@ -383,14 +294,26 @@ export default class EditProfileScreen extends React.Component {
                       label="Islas Heard y McDonald"
                       value="Islas Heard y McDonald"
                     />
-                    <Picker.Item label="Islas Maldivas" value="Islas Maldivas" />
-                    <Picker.Item label="Islas Malvinas" value="Islas Malvinas" />
+                    <Picker.Item
+                      label="Islas Maldivas"
+                      value="Islas Maldivas"
+                    />
+                    <Picker.Item
+                      label="Islas Malvinas"
+                      value="Islas Malvinas"
+                    />
                     <Picker.Item
                       label="Islas Marianas del Norte"
                       value="Islas Marianas del Norte"
                     />
-                    <Picker.Item label="Islas Marshall" value="Islas Marshall" />
-                    <Picker.Item label="Islas Pitcairn" value="Islas Pitcairn" />
+                    <Picker.Item
+                      label="Islas Marshall"
+                      value="Islas Marshall"
+                    />
+                    <Picker.Item
+                      label="Islas Pitcairn"
+                      value="Islas Pitcairn"
+                    />
                     <Picker.Item label="Islas Salomón" value="Islas Salomón" />
                     <Picker.Item
                       label="Islas Turcas y Caicos"
@@ -566,7 +489,10 @@ export default class EditProfileScreen extends React.Component {
                       label="Territorios Australes y Antárticas Franceses"
                       value="Territorios Australes y Antárticas Franceses"
                     />
-                    <Picker.Item label="Timor Oriental" value="Timor Oriental" />
+                    <Picker.Item
+                      label="Timor Oriental"
+                      value="Timor Oriental"
+                    />
                     <Picker.Item label="Togo" value="Togo" />
                     <Picker.Item label="Tokelau" value="Tokelau" />
                     <Picker.Item label="Tonga" value="Tonga" />
@@ -599,16 +525,18 @@ export default class EditProfileScreen extends React.Component {
                 <View
                   style={{
                     marginTop: 20,
-                    width: "100%",
+                    width: "90%",
                     justifyContent: "center",
-                    backgroundColor: colors.white,
+                    backgroundColor: colors.smoke,
                     borderRadius: 10,
                     height: 48
                   }}
                 >
                   <Picker
                     placeholder="Idioma"
-                    selectedValue={(this.state && this.state.pickerValue) || "a"}
+                    selectedValue={
+                      (this.state && this.state.pickerValue) || "a"
+                    }
                     onValueChange={value => {
                       this.setState({ pickerValue: value });
                     }}
@@ -657,23 +585,25 @@ export default class EditProfileScreen extends React.Component {
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Nivel de estudio"
                 ></TextInput>
 
                 <View
                   style={{
                     marginTop: 20,
-                    width: "100%",
+                    width: "90%",
                     justifyContent: "center",
-                    backgroundColor: colors.white,
+                    backgroundColor: colors.smoke,
                     borderRadius: 10,
                     height: 48
                   }}
                 >
                   <Picker
                     placeholder="Profesión"
-                    selectedValue={(this.state && this.state.pickerValue) || "a"}
+                    selectedValue={
+                      (this.state && this.state.pickerValue) || "a"
+                    }
                     onValueChange={value => {
                       this.setState({ pickerValue: value });
                     }}
@@ -710,13 +640,13 @@ export default class EditProfileScreen extends React.Component {
                   </Picker>
                 </View>
 
-                <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
+                <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
                   <View style={{ flex: 1 }}>
                     <TextInput
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.white }
+                        { backgroundColor: colors.smoke }
                       ]}
                       placeholder="Edad"
                     ></TextInput>
@@ -726,8 +656,7 @@ export default class EditProfileScreen extends React.Component {
                       style={{
                         marginTop: 20,
                         justifyContent: "center",
-                        width: "100%",
-                        backgroundColor: colors.white,
+                        backgroundColor: colors.smoke,
                         borderRadius: 10,
                         height: 48
                       }}
@@ -750,19 +679,55 @@ export default class EditProfileScreen extends React.Component {
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  secureTextEntry={true}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
-                  placeholder="Contraseña"
-                  collapsable={true}
-                ></TextInput>
-
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  placeholder="Lugar de trabajo"
+                />
+                <TextInput
+                  placeholderTextColor={colors.darkWhite}
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  placeholder="Puesto/rol"
+                />
+                <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
+                  <View style={{ flex: 1 }}>
+                    <TextInput
+                      placeholderTextColor={colors.darkWhite}
+                      style={[
+                        styles.loginInput,
+                        { backgroundColor: colors.smoke, width: "90%" }
+                      ]}
+                      placeholder="Estado civil"
+                    />
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <TextInput
+                      placeholderTextColor={colors.darkWhite}
+                      style={[
+                        styles.loginInput,
+                        { backgroundColor: colors.smoke, width: "100%" }
+                      ]}
+                      placeholder="Hijos"
+                    />
+                  </View>
+                </View>
+                <TextInput
+                  placeholderTextColor={colors.darkWhite}
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  placeholder="Nro de personas con las que convive"
+                />
+                <TextInput
+                  placeholderTextColor={colors.darkWhite}
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  placeholder="Personas a cargo"
+                />
                 <View
-                  style={{ flexDirection: "row", marginTop: 10, width: "90%" }}
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "flex-start",
+                    width: "90%",
+                    marginTop: 10
+                  }}
                 >
-                  <CheckBox
-                    value={this.state.checked}
-                    onValueChange={this.handleChange}
-                  />
+                  <CheckBox />
                   <Text
                     style={{
                       fontSize: 13,
@@ -771,40 +736,70 @@ export default class EditProfileScreen extends React.Component {
                       marginTop: 7
                     }}
                   >
-                    Soy un médico
+                    En tratamiento por salud mental
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignContent: "flex-start",
+                    width: "90%",
+                    marginTop: 10
+                  }}
+                >
+                  <CheckBox />
+                  <Text
+                    style={{
+                      fontSize: 13,
+                      fontFamily: "Kastelov--Axiforma-Bold",
+                      color: colors.lightGray,
+                      marginTop: 7
+                    }}
+                  >
+                    Medicación previa
                   </Text>
                 </View>
 
-                {medic}
+                <TextInput
+                  placeholderTextColor={colors.darkWhite}
+                  secureTextEntry={true}
+                  style={[styles.loginInput, { backgroundColor: colors.smoke }]}
+                  placeholder="Contraseña"
+                  collapsable={true}
+                ></TextInput>
 
-                <View>
-                  <TouchableOpacity
-                    style={[
-                      styles.signUpButton,
-                      {
-                        backgroundColor: colors.green,
-                        width: "auto",
-                        paddingHorizontal: 20,
-                        marginTop: 20
-                      }
-                    ]}
-                    onPress={this.submit}
+                <Text
+                  style={{
+                    fontFamily: "Kastelov--Axiforma-Bold",
+                    color: colors.darkWhite,
+                    marginTop: 30
+                  }}
+                >
+                  Acepto los{" "}
+                  <Text style={{ color: colors.gray }}>
+                    términos y condiciones
+                  </Text>
+                </Text>
+
+                <TouchableOpacity
+                  style={[styles.signUpButton, { marginBottom: 30 }]}
+                  onPress={this.submit}
+                >
+                  <Text
+                    style={{
+                      fontFamily: "Kastelov--Axiforma-Bold",
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: 15,
+                      color: colors.white
+                    }}
                   >
-                    <Text
-                      style={{
-                        fontFamily: "Kastelov--Axiforma-Bold",
-                        textAlign: "center",
-                        fontSize: 15,
-                        color: colors.white
-                      }}
-                    >
-                      Guardar cambios
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+                    Crear cuenta
+                  </Text>
+                </TouchableOpacity>
               </View>
-            </View>
-          </ScrollView>
+            </ScrollView>
+          </View>
         </KeyboardAvoidingView>
       </SafeAreaView>
     );
