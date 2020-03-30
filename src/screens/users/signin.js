@@ -14,13 +14,9 @@ import {
 import colors from "../../styles/colors";
 import styles from "../../styles/styles";
 
-export default class MedicSignInScreen extends React.Component {
+export default class UserSignInScreen extends React.Component {
   submit = () => {
-    this.props.navigation.navigate("MedicFeed");
-  };
-
-  signup = () => {
-    this.props.navigation.navigate("MedicSignUp");
+    this.props.navigation.navigate("UserFeed");
   };
 
   render() {

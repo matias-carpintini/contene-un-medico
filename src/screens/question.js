@@ -72,7 +72,7 @@ export default class QuestionScreen extends React.Component {
                   fontSize: 15
                 }}
               >
-                Médico
+                Personal de la salud
               </Text>
               <Icon
                 name="ios-medkit"

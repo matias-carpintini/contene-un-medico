@@ -13,13 +13,13 @@ import colors from "../../styles/colors";
 import { ProfileImg, TitleBar } from "../../styles/styled";
 import styles from "../../styles/styles";
 
-export default class MedicProfileScreen extends React.Component {
+export default class UserProfileScreen extends React.Component {
   back = () => {
-    this.props.navigation.navigate("MedicFeed");
+    this.props.navigation.navigate("UserFeed");
   };
 
   edit = () => {
-    this.props.navigation.navigate("EditUser");
+    this.props.navigation.navigate("UserEdit");
   };
 
   feedback = () => {
@@ -81,6 +81,17 @@ export default class MedicProfileScreen extends React.Component {
                 paddingHorizontal: 22
               }}
             >
+              <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.dateReference}>Edad</Text>
+                  <Text style={styles.dateDetails}>18 Años</Text>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.dateReference}>Sexo</Text>
+                  <Text style={styles.dateDetails}>Hombre</Text>
+                </View>
+              </View>
+
               <Text style={styles.dateReference}>Lugar de trabajo</Text>
               <Text style={styles.dateDetails}>
                 Hospital Naval "Dr. Pedro Mallo"
@@ -102,118 +113,36 @@ export default class MedicProfileScreen extends React.Component {
                 </View>
               </View>
 
+              <Text style={styles.dateReference}>Profesión</Text>
+              <Text style={styles.dateDetails}>Fullstack web dev.</Text>
+              
               <Text style={styles.dateReference}>Nivel de estudio</Text>
               <Text style={styles.dateDetails}>
                 Eduación secundaria completa
               </Text>
 
-              <Text style={styles.dateReference}>Profesión</Text>
-              <Text style={styles.dateDetails}>Fullstack web dev.</Text>
+              <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.dateReference}>Estado civil</Text>
+                  <Text style={styles.dateDetails}>Casado</Text>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.dateReference}>Hijos</Text>
+                  <Text style={styles.dateDetails}>3</Text>
+                </View>
+              </View>
 
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.dateReference}>Edad</Text>
-                  <Text style={styles.dateDetails}>18 Años</Text>
+                  <Text style={styles.dateReference}>
+                    En tratamiento por salud mental
+                  </Text>
+                  <Text style={styles.dateDetails}>Sí</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.dateReference}>Sexo</Text>
-                  <Text style={styles.dateDetails}>Hombre</Text>
+                  <Text style={styles.dateReference}>Medicación</Text>
+                  <Text style={styles.dateDetails}>No</Text>
                 </View>
-              </View>
-
-              <TextInput
-                placeholderTextColor={colors.darkWhite}
-                style={[
-                  styles.loginInput,
-                  { backgroundColor: colors.white, width: "100%" }
-                ]}
-                placeholder="Lugar de trabajo"
-              />
-              <TextInput
-                placeholderTextColor={colors.darkWhite}
-                style={[
-                  styles.loginInput,
-                  { backgroundColor: colors.white, width: "100%" }
-                ]}
-                placeholder="Puesto/rol"
-              />
-              <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
-                <View style={{ flex: 1 }}>
-                  <TextInput
-                    placeholderTextColor={colors.darkWhite}
-                    style={[
-                      styles.loginInput,
-                      { backgroundColor: colors.white }
-                    ]}
-                    placeholder="Estado civil"
-                  />
-                </View>
-                <View style={{ flex: 1 }}>
-                  <TextInput
-                    placeholderTextColor={colors.darkWhite}
-                    style={[
-                      styles.loginInput,
-                      { backgroundColor: colors.white, width: "100%" }
-                    ]}
-                    placeholder="Hijos"
-                  />
-                </View>
-              </View>
-              <TextInput
-                placeholderTextColor={colors.darkWhite}
-                style={[
-                  styles.loginInput,
-                  { backgroundColor: colors.white, width: "100%" }
-                ]}
-                placeholder="Nro de personas con las que convive"
-              />
-              <TextInput
-                placeholderTextColor={colors.darkWhite}
-                style={[
-                  styles.loginInput,
-                  { backgroundColor: colors.white, width: "100%" }
-                ]}
-                placeholder="Personas a cargo"
-              />
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  width: "100%",
-                  marginTop: 10
-                }}
-              >
-                <CheckBox />
-                <Text
-                  style={{
-                    fontSize: 13,
-                    fontFamily: "Kastelov--Axiforma-Bold",
-                    color: colors.lightGray,
-                    marginTop: 7
-                  }}
-                >
-                  En tratamiento por salud mental
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignContent: "flex-start",
-                  width: "100%",
-                  marginTop: 10
-                }}
-              >
-                <CheckBox />
-                <Text
-                  style={{
-                    fontSize: 13,
-                    fontFamily: "Kastelov--Axiforma-Bold",
-                    color: colors.lightGray,
-                    marginTop: 7
-                  }}
-                >
-                  Medicación previa
-                </Text>
               </View>
 
               {/* If !contained */}

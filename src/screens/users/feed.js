@@ -4,7 +4,8 @@ import {
   ScrollView,
   StatusBar,
   TouchableOpacity,
-  View
+  View,
+  Text
 } from "react-native";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
@@ -12,20 +13,22 @@ import {
   AreaSafe,
   IconView,
   TitleBarMenuIcons,
-  TitleBarPosition
+  TitleBarPosition,
+  IconIndicatorC
 } from "../../styles/styled";
+import styles from "../../styles/styles";
 
-export default class MedicFeedScreen extends React.Component {
+export default class UserFeedScreen extends React.Component {
   myProfile = () => {
-    this.props.navigation.navigate("MedicProfile");
+    this.props.navigation.navigate("UserProfile");
   };
 
-  medicProfile = () => {
-    this.props.navigation.navigate("MedicProfile");
+  userProfile = () => {
+    this.props.navigation.navigate("UserProfile");
   };
 
   volunteerProfile = () => {
-    this.props.navigation.navigate("volunteerProfile");
+    this.props.navigation.navigate("VolunteerProfile");
   };
 
   render() {
@@ -64,7 +67,7 @@ export default class MedicFeedScreen extends React.Component {
               </TouchableOpacity>
             </IconView>
             <IconView>
-              <TouchableOpacity onPress={this.userProfile}>
+              <TouchableOpacity onPress={this.myProfile}>
                 <SimpleLineIcon
                   name="user"
                   size={20}
@@ -93,7 +96,7 @@ export default class MedicFeedScreen extends React.Component {
           </Text>
 
           {/* If any: */}
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -137,7 +140,7 @@ export default class MedicFeedScreen extends React.Component {
           >
             #EmpatiaParaHeroes
           </Text>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -155,7 +158,7 @@ export default class MedicFeedScreen extends React.Component {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -173,7 +176,7 @@ export default class MedicFeedScreen extends React.Component {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -191,7 +194,7 @@ export default class MedicFeedScreen extends React.Component {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -209,7 +212,7 @@ export default class MedicFeedScreen extends React.Component {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}

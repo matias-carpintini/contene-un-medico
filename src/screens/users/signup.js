@@ -17,13 +17,9 @@ import { ProfileImg } from "../../styles/styled";
 import styles from "../../styles/styles";
 import colors from "../../styles/colors";
 
-export default class MedicSignUpScreen extends React.Component {
+export default class UserSignUpScreen extends React.Component {
   submit = () => {
-    this.props.navigation.navigate("MedicFeed");
-  };
-
-  medicSignUp = () => {
-    this.props.navigation.navigate("MedicSignUp");
+    this.props.navigation.navigate("UserFeed");
   };
 
   render() {

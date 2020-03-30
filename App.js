@@ -15,11 +15,11 @@ import VolunteerProfile from "./src/screens/volunteers/profile";
 import VolunteerEdit from "./src/screens/volunteers/edit";
 
 // Medic
-import MedicSignUp from "./src/screens/volunteers/signup";
-import MedicSignIn from "./src/screens/volunteers/signin";
-import MedicFeed from "./src/screens/volunteers/feed";
-import MedicProfile from "./src/screens/medics/profile";
-import MedicEdit from "./src/screens/volunteers/edit";
+import UserSignUp from "./src/screens/users/signup";
+import UserSignIn from "./src/screens/users/signin";
+import UserFeed from "./src/screens/users/feed";
+import UserProfile from "./src/screens/users/profile";
+import UserEdit from "./src/screens/users/edit";
 
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -34,11 +34,11 @@ const Navigator = createStackNavigator(
     VolunteerFeed: VolunteerFeed,
     VolunteerProfile: VolunteerProfile,
     VolunteerEdit: VolunteerEdit,
-    MedicSignUp: MedicSignUp,
-    MedicSignIn: MedicSignIn,
-    MedicFeed: MedicFeed,
-    MedicProfile: MedicProfile,
-    MedicEdit: MedicEdit
+    UserSignUp: UserSignUp,
+    UserSignIn: UserSignIn,
+    UserFeed: UserFeed,
+    UserProfile: UserProfile,
+    UserEdit: UserEdit
   },
   {
     headerMode: "none"

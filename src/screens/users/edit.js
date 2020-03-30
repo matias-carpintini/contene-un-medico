@@ -17,13 +17,13 @@ import colors from "../../styles/colors";
 import { ProfileImg, TitleBar } from "../../styles/styled";
 import styles from "../../styles/styles";
 
-export default class MedicProfileEditScreen extends React.Component {
+export default class UserProfileEditScreen extends React.Component {
   back = () => {
-    this.props.navigation.navigate("MedicProfile");
+    this.props.navigation.navigate("UserProfile");
   };
 
   submit = () => {
-    this.props.navigation.navigate("MedicProfile")
+    this.props.navigation.navigate("UserProfile")
   };
 
   render() {

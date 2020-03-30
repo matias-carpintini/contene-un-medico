@@ -20,8 +20,8 @@ import {
 import styles from "../../styles/styles";
 
 export default class VolunteerFeedScreen extends React.Component {
-  medicProfile = () => {
-    this.props.navigation.navigate("MedicProfile");
+  userProfile = () => {
+    this.props.navigation.navigate("UserProfile");
   };
 
   userProfile = () => {
@@ -93,7 +93,7 @@ export default class VolunteerFeedScreen extends React.Component {
           </Text>
 
           {/* If any: */}
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -137,7 +137,7 @@ export default class VolunteerFeedScreen extends React.Component {
           >
             #EmpatiaParaHeroes
           </Text>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -155,7 +155,7 @@ export default class VolunteerFeedScreen extends React.Component {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -173,7 +173,7 @@ export default class VolunteerFeedScreen extends React.Component {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -191,7 +191,7 @@ export default class VolunteerFeedScreen extends React.Component {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
@@ -209,7 +209,7 @@ export default class VolunteerFeedScreen extends React.Component {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.medicProfile}>
+          <TouchableOpacity onPress={this.userProfile}>
             <View style={{ flexDirection: "row", flex: 1 }}>
               <IconIndicatorC
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
