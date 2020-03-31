@@ -26,6 +26,10 @@ export default class VolunteerSignUpScreen extends React.Component {
     this.props.navigation.navigate("VolunteerSignUp");
   };
 
+  terms = () => {
+    this.props.navigation.navigate("Terms");
+  };
+
   render() {
     return (
       <SafeAreaView style={{ backgroundColor: colors.smoke, flex: 1 }}>
@@ -685,18 +689,20 @@ export default class VolunteerSignUpScreen extends React.Component {
                   collapsable={true}
                 ></TextInput>
 
-                <Text
-                  style={{
-                    fontFamily: "Kastelov--Axiforma-Bold",
-                    color: colors.darkWhite,
-                    marginTop: 30
-                  }}
-                >
-                  Acepto los{" "}
-                  <Text style={{ color: colors.gray }}>
-                    términos y condiciones
+                <TouchableOpacity onPress={this.terms}>
+                  <Text
+                    style={{
+                      fontFamily: "Kastelov--Axiforma-Bold",
+                      color: colors.darkWhite,
+                      marginTop: 30
+                    }}
+                  >
+                    Acepto los{" "}
+                    <Text style={{ color: colors.gray }}>
+                      términos y condiciones
+                    </Text>
                   </Text>
-                </Text>
+                </TouchableOpacity>
 
                 <TouchableOpacity
                   style={[styles.signUpButton, { marginBottom: 30 }]}

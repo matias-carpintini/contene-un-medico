@@ -22,6 +22,10 @@ export default class UserSignUpScreen extends React.Component {
     this.props.navigation.navigate("UserFeed");
   };
 
+  terms = () => {
+    this.props.navigation.navigate("Terms");
+  };
+
   render() {
     return (
       <SafeAreaView style={{ backgroundColor: colors.smoke, flex: 1 }}>
@@ -647,6 +651,7 @@ export default class UserSignUpScreen extends React.Component {
                       placeholder="Edad"
                     ></TextInput>
                   </View>
+
                   <View style={{ flex: 1 }}>
                     <View
                       style={{
@@ -678,11 +683,13 @@ export default class UserSignUpScreen extends React.Component {
                   style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Lugar de trabajo"
                 />
+
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
                   style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Puesto/rol"
                 />
+
                 <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
                   <View style={{ flex: 1 }}>
                     <TextInput
@@ -694,6 +701,7 @@ export default class UserSignUpScreen extends React.Component {
                       placeholder="Estado civil"
                     />
                   </View>
+
                   <View style={{ flex: 1 }}>
                     <TextInput
                       placeholderTextColor={colors.darkWhite}
@@ -705,56 +713,30 @@ export default class UserSignUpScreen extends React.Component {
                     />
                   </View>
                 </View>
+
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
                   style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Nro de personas con las que convive"
                 />
+
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
                   style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Personas a cargo"
                 />
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "flex-start",
-                    width: "90%",
-                    marginTop: 10
-                  }}
-                >
-                  <CheckBox />
-                  <Text
-                    style={{
-                      fontSize: 13,
-                      fontFamily: "Kastelov--Axiforma-Bold",
-                      color: colors.lightGray,
-                      marginTop: 7
-                    }}
-                  >
-                    En tratamiento por salud mental
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignContent: "flex-start",
-                    width: "90%",
-                    marginTop: 10
-                  }}
-                >
-                  <CheckBox />
-                  <Text
-                    style={{
-                      fontSize: 13,
-                      fontFamily: "Kastelov--Axiforma-Bold",
-                      color: colors.lightGray,
-                      marginTop: 7
-                    }}
-                  >
-                    Medicación previa
-                  </Text>
-                </View>
+
+                <TextInput
+                  placeholderTextColor={colors.darkWhite}
+                  style={[
+                    styles.loginInput,
+                    { backgroundColor: colors.smoke, textAlignVertical: "top" }
+                  ]}
+                  placeholder="Motivo por el cual solicitas contención..."
+                  collapsable={true}
+                  multiline
+                  numberOfLines={4}
+                ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
@@ -772,9 +754,11 @@ export default class UserSignUpScreen extends React.Component {
                   }}
                 >
                   Acepto los{" "}
-                  <Text style={{ color: colors.gray }}>
-                    términos y condiciones
-                  </Text>
+                  <TouchableOpacity onPress={this.terms}>
+                    <Text style={{ color: colors.gray }}>
+                      términos y condiciones
+                    </Text>
+                  </TouchableOpacity>
                 </Text>
 
                 <TouchableOpacity

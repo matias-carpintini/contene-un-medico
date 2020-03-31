@@ -4,6 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 
 // Common
 import Question from "./src/screens/question";
+import Terms from "./src/screens/terms";
 import Welcome from "./src/screens/welcome";
 import Feedback from "./src/screens/feedback";
 
@@ -27,6 +28,7 @@ import * as Font from "expo-font";
 const Navigator = createStackNavigator(
   {
     Question: Question,
+    Terms: Terms,
     Welcome: Welcome,
     Feedback: Feedback,
     VolunteerSignUp: VolunteerSignUp,

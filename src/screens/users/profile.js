@@ -115,7 +115,7 @@ export default class UserProfileScreen extends React.Component {
 
               <Text style={styles.dateReference}>Profesión</Text>
               <Text style={styles.dateDetails}>Fullstack web dev.</Text>
-              
+
               <Text style={styles.dateReference}>Nivel de estudio</Text>
               <Text style={styles.dateDetails}>
                 Eduación secundaria completa
@@ -132,18 +132,8 @@ export default class UserProfileScreen extends React.Component {
                 </View>
               </View>
 
-              <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.dateReference}>
-                    En tratamiento por salud mental
-                  </Text>
-                  <Text style={styles.dateDetails}>Sí</Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.dateReference}>Medicación</Text>
-                  <Text style={styles.dateDetails}>No</Text>
-                </View>
-              </View>
+              <Text style={styles.dateReference}>Motivo de contención</Text>
+              <Text style={styles.dateDetails}>Pariatur ea laboris consectetur minim commodo officia nulla eu.</Text>
 
               {/* If !contained */}
               {/* <TouchableOpacity

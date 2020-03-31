@@ -19,6 +19,10 @@ export default class UserSignInScreen extends React.Component {
     this.props.navigation.navigate("UserFeed");
   };
 
+  terms = () => {
+    this.props.navigation.navigate("Terms");
+  };
+
   render() {
     return (
       <SafeAreaView style={{ backgroundColor: colors.smoke, flex: 1 }}>
