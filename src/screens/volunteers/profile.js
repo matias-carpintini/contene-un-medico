@@ -1,11 +1,36 @@
 import React from "react";
-import { Image, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
+  Alert
+} from "react-native";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
 import { ProfileImg, TitleBar } from "../../styles/styled";
 import styles from "../../styles/styles";
 
 export default class VolunteerProfileScreen extends React.Component {
+  createForgetMeAlert = () => {
+    Alert.alert(
+      "Estás seguro?",
+      "Esta acción no puede ser revertida",
+      [
+        {
+          text: "No, cancelar",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "Sí, olvídame", onPress: () => console.log("OK Pressed") }
+      ],
+      { cancelable: false }
+    );
+  }
+  
   back = () => {
     this.props.navigation.navigate("VolunteerFeed");
   };
@@ -108,6 +133,9 @@ export default class VolunteerProfileScreen extends React.Component {
                 </View>
               </View>
 
+              <Text style={styles.dateReference}>DNI</Text>
+              <Text style={styles.dateDetails}>43.589.435</Text>
+
               <TouchableOpacity
                 style={[
                   styles.signUpButton,
@@ -133,7 +161,20 @@ export default class VolunteerProfileScreen extends React.Component {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ marginVertical: 10 }} />
+          <TouchableOpacity onPress={this.createForgetMeAlert}>
+            <Text
+              style={{
+                marginTop: 0,
+                fontFamily: "Kastelov--Axiforma-Medium",
+                fontSize: 14,
+                color: colors.darkRed,
+                textAlign: "center"
+              }}
+            >
+              Eliminar mi cuenta
+            </Text>
+          </TouchableOpacity>
+          <View style={{ marginVertical: 20 }} />
         </ScrollView>
       </SafeAreaView>
     );

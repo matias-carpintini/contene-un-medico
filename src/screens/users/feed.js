@@ -164,12 +164,12 @@ export default class UserFeedScreen extends React.Component {
                 style={{ marginLeft: 20, backgroundColor: colors.smoke }}
               >
                 <Image
-                  source={require("../../assets/images/juan.jpeg")}
+                  source={require("../../assets/images/emmanuelle.png")}
                   style={{ width: 80, height: 80, borderRadius: 30 }}
                 ></Image>
               </IconIndicatorC>
               <View style={{ width: 250 }}>
-                <Text style={styles.iconItemRef}>Juan</Text>
+                <Text style={styles.iconItemRef}>Emmanuelle</Text>
                 <Text style={styles.iconItemDesc}>
                   Suspendisse ullamcorper nisi a ultrices porta.
                 </Text>
