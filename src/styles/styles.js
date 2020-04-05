@@ -3,7 +3,7 @@ import colors from "./colors";
 const styles = {
   scrollUp: {
     marginTop: 10,
-    paddingVertical: 10
+    paddingVertical: 10,
   },
 
   cardDetails: {
@@ -12,14 +12,14 @@ const styles = {
     marginTop: 20,
     marginBottom: 16,
     marginHorizontal: "5%",
-    paddingBottom: 20
+    paddingBottom: 20,
   },
 
   cardDetailsDate: {
     alignItems: "flex-end",
     margin: 24,
     fontFamily: "Kastelov--Axiforma-Bold",
-    color: colors.blue
+    color: colors.blue,
   },
 
   cardDetailsRef: {
@@ -27,28 +27,28 @@ const styles = {
     marginLeft: 16,
     fontFamily: "Kastelov--Axiforma-Bold",
     color: colors.blue,
-    marginTop: 50
+    marginTop: 50,
   },
 
   cardDetailsTitle: {
     marginTop: 10,
     color: colors.green,
     fontFamily: "Kastelov--Axiforma-Bold",
-    fontSize: 24
+    fontSize: 24,
   },
 
   ammountContainer: {
     alignItems: "flex-end",
     alignSelf: "flex-end",
     justifyContent: "flex-end",
-    marginTop: 30
+    marginTop: 30,
   },
 
   ammountType: {
     alignSelf: "flex-start",
     fontFamily: "Kastelov--Axiforma-Bold",
     color: colors.darkWhite,
-    fontSize: 12
+    fontSize: 12,
   },
 
   ammountCurrency: {
@@ -57,14 +57,14 @@ const styles = {
     color: colors.black,
     fontSize: 12,
     marginTop: -17,
-    marginLeft: 110
+    marginLeft: 110,
   },
 
   ammountValue: {
     alignSelf: "center",
     fontFamily: "Kastelov--Axiforma-Bold",
     color: colors.green,
-    fontSize: 22
+    fontSize: 22,
   },
 
   searchInput: {
@@ -77,40 +77,40 @@ const styles = {
     color: colors.gray,
     paddingVertical: 10,
     borderRadius: 50,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
 
   itemContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   itemRef: {
     fontFamily: "Kastelov--Axiforma-Bold",
     color: colors.black,
-    marginLeft: 10
+    marginLeft: 10,
   },
 
   itemAmmount: {
     fontFamily: "Kastelov--Axiforma-Bold",
     color: colors.green,
     textAlign: "right",
-    marginRight: 25
+    marginRight: 25,
   },
 
   cardChart: {
     height: 300,
     backgroundColor: colors.smoke,
     margin: 16,
-    borderRadius: 20
+    borderRadius: 20,
   },
 
   iconItemRef: {
     fontFamily: "Kastelov--Axiforma-Bold",
     color: colors.lightGray,
     marginTop: 20,
-    marginLeft: 10
+    marginLeft: 10,
   },
 
   iconItemDesc: {
@@ -119,7 +119,7 @@ const styles = {
     marginTop: 0,
     marginLeft: 10,
     paddingRight: 20,
-    fontSize: 14
+    fontSize: 14,
   },
 
   chatDateCollection: {
@@ -127,7 +127,7 @@ const styles = {
     marginVertical: 10,
     fontFamily: "Kastelov--Axiforma-Bold",
     fontSize: 10,
-    textAlign: "center"
+    textAlign: "center",
   },
 
   formContainer: {
@@ -136,7 +136,7 @@ const styles = {
     alignItems: "center",
     marginTop: "5%",
     borderTopStartRadius: 50,
-    borderTopEndRadius: 50
+    borderTopEndRadius: 50,
   },
 
   loginInput: {
@@ -147,7 +147,7 @@ const styles = {
     backgroundColor: colors.lightWhite,
     paddingVertical: 10,
     borderRadius: 10,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
 
   loginButton: {
@@ -155,7 +155,7 @@ const styles = {
     justifyContent: "center",
     backgroundColor: colors.green,
     paddingVertical: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
 
   signUpButton: {
@@ -164,26 +164,35 @@ const styles = {
     justifyContent: "center",
     backgroundColor: colors.green,
     paddingVertical: 10,
-    borderRadius: 10
+    borderRadius: 10,
+  },
+
+  diasbledSignUpButton: {
+    width: "80%",
+    marginTop: 30,
+    justifyContent: "center",
+    backgroundColor: colors.lightGray,
+    paddingVertical: 10,
+    borderRadius: 10,
   },
 
   pageTitle: {
     color: colors.green,
     fontFamily: "Kastelov--Axiforma-Medium",
-    fontSize: 20
+    fontSize: 20,
   },
 
   dateReference: {
     color: colors.lightGray,
     fontFamily: "Kastelov--Axiforma-Bold",
     fontSize: 16,
-    marginTop: 15
+    marginTop: 15,
   },
 
   dateDetails: {
     color: colors.gray,
     fontFamily: "Kastelov--Axiforma-Regular",
-    fontSize: 14
+    fontSize: 14,
   },
 
   listRef: {
@@ -191,7 +200,7 @@ const styles = {
     fontFamily: "Kastelov--Axiforma-Bold",
     color: colors.darkWhite,
     fontSize: 18,
-    marginBottom: 15
+    marginBottom: 15,
   },
 
   annotation: {
@@ -201,7 +210,7 @@ const styles = {
     width: 300,
     marginLeft: 20,
     alignSelf: "flex-start",
-    color: colors.lightGray
+    color: colors.lightGray,
   },
 
   description: {
@@ -211,53 +220,53 @@ const styles = {
     fontFamily: "Kastelov--Axiforma-Medium",
     fontSize: 13,
     color: colors.lightGray,
-    marginHorizontal: 15
+    marginHorizontal: 15,
   },
 
   messageReceiverContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: "3%"
+    paddingHorizontal: "3%",
   },
 
   messageReceiverContainerDetails: {
     alignItems: "flex-start",
     marginVertical: 10,
     paddingHorizontal: 10,
-    maxWidth: "78%"
+    maxWidth: "78%",
   },
 
   messageReceiverUsername: {
     color: colors.lightGray,
     fontFamily: "Kastelov--Axiforma-Bold",
-    fontSize: 15
+    fontSize: 15,
   },
 
   messageReceiverDate: {
     color: colors.darkWhite,
     fontFamily: "Kastelov--Axiforma-Bold",
     fontSize: 8,
-    textAlign: "center"
+    textAlign: "center",
   },
 
   messageReceiverBody: {
     color: colors.gray,
     fontFamily: "Kastelov--Axiforma-Regular",
     fontSize: 13,
-    marginRight: 10
+    marginRight: 10,
   },
 
   messageSenderContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignSelf: "flex-end"
+    alignSelf: "flex-end",
   },
 
   messageSenderBody: {
     color: colors.gray,
     fontFamily: "Kastelov--Axiforma-Regular",
     fontSize: 13,
-    marginRight: 15
+    marginRight: 15,
   },
 
   messageSenderDate: {
@@ -266,7 +275,7 @@ const styles = {
     marginTop: -5,
     fontSize: 8,
     textAlign: "right",
-    marginHorizontal: "10%"
+    marginHorizontal: "10%",
   },
 
   messageSenderAvatarContainer: {
@@ -275,7 +284,7 @@ const styles = {
     backgroundColor: colors.lightWhite,
     flexDirection: "row",
     justifyContent: "flex-end",
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
 
   messageSenderAvatar: {
@@ -283,8 +292,8 @@ const styles = {
     height: 10,
     backgroundColor: "black",
     padding: 20,
-    borderRadius: 1000
-  }
+    borderRadius: 1000,
+  },
 };
 
 export default styles;
