@@ -9,7 +9,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import colors from "../../styles/colors";
 import styles from "../../styles/styles";
@@ -32,7 +32,7 @@ export default class VolunteerSignInScreen extends React.Component {
           style={{
             height: "20%",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Image
@@ -46,16 +46,13 @@ export default class VolunteerSignInScreen extends React.Component {
               fontFamily: "Kastelov--Axiforma-Bold",
               fontSize: 13,
               marginTop: -40,
-              color: colors.lightGray
+              color: colors.lightGray,
             }}
           >
             el mundo necesita de nuestra empatía
           </Text>
         </View>
-        <KeyboardAvoidingView
-          behavior={Platform.select({ android: "height", ios: "padding" })}
-          style={{ flex: 1 }}
-        >
+        <KeyboardAvoidingView style={{ flex: 1 }}>
           <View
             style={{
               flex: 1,
@@ -64,7 +61,7 @@ export default class VolunteerSignInScreen extends React.Component {
               marginBottom: 0,
               borderTopStartRadius: 80,
               borderTopEndRadius: 80,
-              flex: 1
+              flex: 1,
             }}
           >
             <ScrollView horizontal={false}>
@@ -74,7 +71,7 @@ export default class VolunteerSignInScreen extends React.Component {
                   resizeMode: "contain",
                   width: "100%",
                   height: 300,
-                  marginHorizontal: 20
+                  marginHorizontal: 20,
                 }}
               />
               <View style={{ alignItems: "center", flex: 1, marginTop: 40 }}>
@@ -82,6 +79,7 @@ export default class VolunteerSignInScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Correo electrónico"
+                  keyboardType="email-address"
                 ></TextInput>
 
                 <TextInput
@@ -99,7 +97,7 @@ export default class VolunteerSignInScreen extends React.Component {
                     style={{
                       fontSize: 13,
                       fontFamily: "Kastelov--Axiforma-Bold",
-                      color: colors.lightGray
+                      color: colors.lightGray,
                     }}
                   >
                     Olvidaste tu contraseña?
@@ -109,7 +107,7 @@ export default class VolunteerSignInScreen extends React.Component {
                 <TouchableOpacity
                   style={[
                     styles.signUpButton,
-                    { marginTop: 40, backgroundColor: colors.green }
+                    { marginTop: 40, backgroundColor: colors.green },
                   ]}
                   onPress={this.submit}
                 >
@@ -119,7 +117,7 @@ export default class VolunteerSignInScreen extends React.Component {
                       color: "white",
                       textAlign: "center",
                       fontSize: 15,
-                      color: colors.white
+                      color: colors.white,
                     }}
                   >
                     Iniciar sesión

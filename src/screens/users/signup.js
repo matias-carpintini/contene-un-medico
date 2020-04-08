@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   View,
   Picker,
-  CheckBox
+  CheckBox,
 } from "react-native";
 import { ProfileImg } from "../../styles/styled";
 import styles from "../../styles/styles";
@@ -35,7 +35,7 @@ export default class UserSignUpScreen extends React.Component {
           style={{
             height: "20%",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Image
@@ -49,16 +49,13 @@ export default class UserSignUpScreen extends React.Component {
               fontFamily: "Kastelov--Axiforma-Bold",
               fontSize: 13,
               marginTop: -40,
-              color: colors.lightGray
+              color: colors.lightGray,
             }}
           >
             Crea tu cuenta, ¡es fácil!
           </Text>
         </View>
-        <KeyboardAvoidingView
-          behavior={Platform.select({ android: "height", ios: "padding" })}
-          style={{ flex: 1 }}
-        >
+        <KeyboardAvoidingView style={{ flex: 1 }}>
           <View
             style={{
               flex: 1,
@@ -67,7 +64,7 @@ export default class UserSignUpScreen extends React.Component {
               marginBottom: 0,
               borderTopStartRadius: 80,
               borderTopEndRadius: 80,
-              flex: 1
+              flex: 1,
             }}
           >
             <ScrollView horizontal={false}>
@@ -78,7 +75,7 @@ export default class UserSignUpScreen extends React.Component {
                     marginBottom: -60,
                     marginTop: 20,
                     fontFamily: "Kastelov--Axiforma-Bold",
-                    fontSize: 18
+                    fontSize: 18,
                   }}
                 >
                   Foto de perfil
@@ -88,7 +85,7 @@ export default class UserSignUpScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { marginTop: 80, backgroundColor: colors.smoke }
+                    { marginTop: 80, backgroundColor: colors.smoke },
                   ]}
                   placeholder="Nombre y Apellido"
                 ></TextInput>
@@ -97,6 +94,7 @@ export default class UserSignUpScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Correo electrónico"
+                  keyboardType="email-address"
                 ></TextInput>
 
                 <TextInput
@@ -109,6 +107,7 @@ export default class UserSignUpScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[styles.loginInput, { backgroundColor: colors.smoke }]}
                   placeholder="Teléfono de contacto"
+                  keyboardType="phone-pad"
                 ></TextInput>
 
                 <TextInput
@@ -124,7 +123,7 @@ export default class UserSignUpScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.smoke,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
@@ -132,7 +131,7 @@ export default class UserSignUpScreen extends React.Component {
                     selectedValue={
                       (this.state && this.state.pickerValue) || "a"
                     }
-                    onValueChange={value => {
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -535,7 +534,7 @@ export default class UserSignUpScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.smoke,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
@@ -543,7 +542,7 @@ export default class UserSignUpScreen extends React.Component {
                     selectedValue={
                       (this.state && this.state.pickerValue) || "a"
                     }
-                    onValueChange={value => {
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -947,7 +946,7 @@ export default class UserSignUpScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.smoke,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
@@ -955,7 +954,7 @@ export default class UserSignUpScreen extends React.Component {
                     selectedValue={
                       (this.state && this.state.pickerValue) || "a"
                     }
-                    onValueChange={value => {
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -1014,7 +1013,7 @@ export default class UserSignUpScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.smoke,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
@@ -1022,7 +1021,7 @@ export default class UserSignUpScreen extends React.Component {
                     selectedValue={
                       (this.state && this.state.pickerValue) || "a"
                     }
-                    onValueChange={value => {
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -1064,7 +1063,7 @@ export default class UserSignUpScreen extends React.Component {
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.smoke }
+                        { backgroundColor: colors.smoke },
                       ]}
                       placeholder="Edad"
                     ></TextInput>
@@ -1077,7 +1076,7 @@ export default class UserSignUpScreen extends React.Component {
                         justifyContent: "center",
                         backgroundColor: colors.smoke,
                         borderRadius: 10,
-                        height: 48
+                        height: 48,
                       }}
                     >
                       <Picker
@@ -1085,7 +1084,7 @@ export default class UserSignUpScreen extends React.Component {
                         selectedValue={
                           (this.state && this.state.pickerValue) || "a"
                         }
-                        onValueChange={value => {
+                        onValueChange={(value) => {
                           this.setState({ pickerValue: value });
                         }}
                       >
@@ -1114,7 +1113,7 @@ export default class UserSignUpScreen extends React.Component {
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.smoke, width: "90%" }
+                        { backgroundColor: colors.smoke, width: "90%" },
                       ]}
                       placeholder="Estado civil"
                     />
@@ -1125,7 +1124,7 @@ export default class UserSignUpScreen extends React.Component {
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.smoke, width: "100%" }
+                        { backgroundColor: colors.smoke, width: "100%" },
                       ]}
                       placeholder="Hijos"
                     />
@@ -1148,7 +1147,7 @@ export default class UserSignUpScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.smoke, textAlignVertical: "top" }
+                    { backgroundColor: colors.smoke, textAlignVertical: "top" },
                   ]}
                   placeholder="Motivo por el cual solicitas contención..."
                   collapsable={true}
@@ -1168,7 +1167,7 @@ export default class UserSignUpScreen extends React.Component {
                   style={{
                     fontFamily: "Kastelov--Axiforma-Bold",
                     color: colors.darkWhite,
-                    marginTop: 30
+                    marginTop: 30,
                   }}
                 >
                   Acepto los{" "}
@@ -1189,7 +1188,7 @@ export default class UserSignUpScreen extends React.Component {
                       color: "white",
                       textAlign: "center",
                       fontSize: 15,
-                      color: colors.white
+                      color: colors.white,
                     }}
                   >
                     Crear cuenta

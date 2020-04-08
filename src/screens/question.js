@@ -25,7 +25,7 @@ export default class QuestionScreen extends React.Component {
           flex: 1
         }}
       >
-        <StatusBar backgroundColor={colors.white} barStyle="white-content" />
+        <StatusBar backgroundColor={colors.dark} barStyle="white-content" />
         <View
           style={{
             width: "100%",
