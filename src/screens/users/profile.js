@@ -7,7 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Alert
+  Alert,
 } from "react-native";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
@@ -23,14 +23,14 @@ export default class UserProfileScreen extends React.Component {
         {
           text: "No, cancelar",
           onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
+          style: "cancel",
         },
-        { text: "Sí, olvídame", onPress: () => console.log("OK Pressed") }
+        { text: "Sí, olvídame", onPress: () => console.log("OK Pressed") },
       ],
       { cancelable: false }
     );
-  }
-  
+  };
+
   back = () => {
     this.props.navigation.navigate("UserFeed");
   };
@@ -49,7 +49,7 @@ export default class UserProfileScreen extends React.Component {
         style={{
           backgroundColor: colors.white,
           flexDirection: "column",
-          flex: 1
+          flex: 1,
         }}
       >
         <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
@@ -80,7 +80,7 @@ export default class UserProfileScreen extends React.Component {
                 marginTop: 30,
                 backgroundColor: colors.lightBlue,
                 width: 150,
-                height: 150
+                height: 150,
               }}
             >
               <Image
@@ -95,7 +95,7 @@ export default class UserProfileScreen extends React.Component {
               style={{
                 alignItems: "flex-start",
                 marginVertical: 10,
-                paddingHorizontal: 22
+                paddingHorizontal: 22,
               }}
             >
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
@@ -150,9 +150,7 @@ export default class UserProfileScreen extends React.Component {
               </View>
 
               <Text style={styles.dateReference}>DNI</Text>
-              <Text style={styles.dateDetails}>
-                43.589.435
-              </Text>
+              <Text style={styles.dateDetails}>43.589.435</Text>
 
               <Text style={styles.dateReference}>Motivo de contención</Text>
               <Text style={styles.dateDetails}>
@@ -190,8 +188,8 @@ export default class UserProfileScreen extends React.Component {
                     backgroundColor: colors.blue,
                     width: "100%",
                     paddingHorizontal: 20,
-                    marginTop: 20
-                  }
+                    marginTop: 20,
+                  },
                 ]}
                 onPress={this.contain}
               >
@@ -200,7 +198,7 @@ export default class UserProfileScreen extends React.Component {
                     fontFamily: "Kastelov--Axiforma-Medium",
                     textAlign: "center",
                     fontSize: 12,
-                    color: colors.white
+                    color: colors.white,
                   }}
                 >
                   Llamar por teléfono
@@ -213,8 +211,8 @@ export default class UserProfileScreen extends React.Component {
                     backgroundColor: colors.green,
                     width: "100%",
                     paddingHorizontal: 20,
-                    marginTop: 10
-                  }
+                    marginTop: 10,
+                  },
                 ]}
               >
                 <Text
@@ -222,7 +220,7 @@ export default class UserProfileScreen extends React.Component {
                     fontFamily: "Kastelov--Axiforma-Medium",
                     textAlign: "center",
                     fontSize: 12,
-                    color: colors.white
+                    color: colors.white,
                   }}
                 >
                   Hablar por WhatsApp
@@ -237,7 +235,7 @@ export default class UserProfileScreen extends React.Component {
                 fontFamily: "Kastelov--Axiforma-Medium",
                 fontSize: 14,
                 color: colors.darkRed,
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               Eliminar mi cuenta

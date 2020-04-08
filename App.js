@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import { getItemAsync } from "expo-secure-store";
 
 // Common
 import Question from "./src/screens/question";
@@ -40,15 +41,15 @@ const Navigator = createStackNavigator(
     UserSignIn: UserSignIn,
     UserFeed: UserFeed,
     UserProfile: UserProfile,
-    UserEdit: UserEdit
+    UserEdit: UserEdit,
   },
   {
-    headerMode: "none"
+    headerMode: "none",
   }
 );
 
 export default class App extends React.Component {
-  state = { isLoading: true };
+  state = { isLoading: true, token: null };
 
   componentDidMount = async () => {
     this.setState({ isLoading: true });
@@ -59,13 +60,17 @@ export default class App extends React.Component {
       "Kastelov--Axiforma-Light": require("./src/assets/fonts/Kastelov--Axiforma-Light.otf"),
       "Kastelov--Axiforma-Medium": require("./src/assets/fonts/Kastelov--Axiforma-Medium.otf"),
       "Kastelov--Axiforma-Regular": require("./src/assets/fonts/Kastelov--Axiforma-Regular.otf"),
-      "Kastelov--Axiforma-SemiBold": require("./src/assets/fonts/Kastelov--Axiforma-SemiBold.otf")
+      "Kastelov--Axiforma-SemiBold": require("./src/assets/fonts/Kastelov--Axiforma-SemiBold.otf"),
     });
+
+    getItemAsync("token").then((token) => this.setState({ token }));
 
     this.setState({ isLoading: false });
   };
 
   render() {
+    // TODO: ROUTE TO FEED
+    const { token } = this.state;
     const MainApp = !this.state.isLoading ? (
       createAppContainer(Navigator)
     ) : (
