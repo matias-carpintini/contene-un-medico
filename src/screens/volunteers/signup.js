@@ -1,5 +1,5 @@
 import React from "react";
-import * as SecureStore from "expo-secure-store";
+import { setItemAsync } from "expo-secure-store";
 import {
   Image,
   KeyboardAvoidingView,
@@ -36,6 +36,7 @@ export default VolunteerSignUpScreen = () => {
     courses: "NOT IN UI",
     nationality: "Argentina",
     workspace: "NOT IN UI",
+    dni: "NOT IN UI",
     position: "NOT IN UI",
     childs: "NOT IN UI",
     marital_status: "NOT IN UI",
@@ -46,8 +47,8 @@ export default VolunteerSignUpScreen = () => {
   const submit = () => {
     bridge.createUser(formData).then((response) => {
       if (response.status) {
-        SecureStore.setItemAsync("user", JSON.stringify(response.User));
-        SecureStore.setItemAsync("token", JSON.stringify(response.token));
+        setItemAsync("user", JSON.stringify(response.User));
+        setItemAsync("token", JSON.stringify(response.token));
       } else {
         console.log("error", response);
       }
