@@ -17,8 +17,25 @@ import {
   IconIndicatorC
 } from "../../styles/styled";
 import styles from "../../styles/styles";
+import bridge from "../../helpers/bridge";
 
 export default class UserFeedScreen extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      users: []
+    }
+  }
+
+  componentDidMount(){
+    const { token } = this.state;
+    bridge
+      .getUsers(token)
+      .then((users) => this.setState({ users }))
+      .catch((error) => console.error(error));
+  }
+
   myProfile = () => {
     this.props.navigation.navigate("UserProfile");
   };
@@ -37,7 +54,7 @@ export default class UserFeedScreen extends React.Component {
         <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
         <TitleBarPosition
           style={{
-            backgroundColor: colors.white
+            backgroundColor: colors.white,
           }}
         >
           <TouchableOpacity>
@@ -46,7 +63,7 @@ export default class UserFeedScreen extends React.Component {
                 flexDirection: "row",
                 margin: 0,
                 justifyContent: "center",
-                alignItems: "center"
+                alignItems: "center",
               }}
             >
               <Image
@@ -89,7 +106,7 @@ export default class UserFeedScreen extends React.Component {
               marginBottom: 10,
               fontFamily: "Kastelov--Axiforma-Bold",
               color: colors.green,
-              fontSize: 18
+              fontSize: 18,
             }}
           >
             Tu aliado:
@@ -135,101 +152,38 @@ export default class UserFeedScreen extends React.Component {
               fontFamily: "Kastelov--Axiforma-Bold",
               color: colors.blue,
               fontSize: 18,
-              marginBottom: 10
+              marginBottom: 10,
             }}
           >
             #EmpatiaParaHeroes
           </Text>
-          <TouchableOpacity onPress={this.userProfile}>
-            <View style={{ flexDirection: "row", flex: 1 }}>
-              <IconIndicatorC
-                style={{ marginLeft: 20, backgroundColor: colors.smoke }}
-              >
-                <Image
-                  source={require("../../assets/images/jp.jpeg")}
-                  style={{ width: 80, height: 80, borderRadius: 30 }}
-                ></Image>
-              </IconIndicatorC>
-              <View style={{ width: 250 }}>
-                <Text style={styles.iconItemRef}>Juan Pablo Villani</Text>
-                <Text style={styles.iconItemDesc}>
-                  Suspendisse ullamcorper nisi a ultrices porta.
-                </Text>
+          {this.state.users.map((user, id) => (
+            <TouchableOpacity onPress={() => this.userProfile(user)} key={id}>
+              <View style={{ flexDirection: "row", flex: 1 }}>
+                <IconIndicatorC
+                  style={{ marginLeft: 20, backgroundColor: colors.smoke }}
+                >
+                  {user.img ? (
+                    <Image
+                      resizeMethod="scale"
+                      source={{ uri: user.img }}
+                      style={{ width: 150, height: 150 }}
+                    />
+                  ) : null}
+                </IconIndicatorC>
+                <View style={{ width: 250 }}>
+                  <Text style={styles.iconItemRef}>{user.full_name}</Text>
+                  <Text style={styles.iconItemDesc}>
+                    {user.resume
+                      ? user.resume > 45
+                        ? user.resume.substring(0, 45) + "..."
+                        : user.resume
+                      : "Sin biografía."}
+                  </Text>
+                </View>
               </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.userProfile}>
-            <View style={{ flexDirection: "row", flex: 1 }}>
-              <IconIndicatorC
-                style={{ marginLeft: 20, backgroundColor: colors.smoke }}
-              >
-                <Image
-                  source={require("../../assets/images/emmanuelle.png")}
-                  style={{ width: 80, height: 80, borderRadius: 30 }}
-                ></Image>
-              </IconIndicatorC>
-              <View style={{ width: 250 }}>
-                <Text style={styles.iconItemRef}>Emmanuelle</Text>
-                <Text style={styles.iconItemDesc}>
-                  Suspendisse ullamcorper nisi a ultrices porta.
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.userProfile}>
-            <View style={{ flexDirection: "row", flex: 1 }}>
-              <IconIndicatorC
-                style={{ marginLeft: 20, backgroundColor: colors.smoke }}
-              >
-                <Image
-                  source={require("../../assets/images/matias.png")}
-                  style={{ width: 80, height: 80, borderRadius: 30 }}
-                ></Image>
-              </IconIndicatorC>
-              <View style={{ width: 250 }}>
-                <Text style={styles.iconItemRef}>Matias Carpintini</Text>
-                <Text style={styles.iconItemDesc}>
-                  Suspendisse ullamcorper nisi a ultrices porta.
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.userProfile}>
-            <View style={{ flexDirection: "row", flex: 1 }}>
-              <IconIndicatorC
-                style={{ marginLeft: 20, backgroundColor: colors.smoke }}
-              >
-                <Image
-                  source={require("../../assets/images/facu.jpg")}
-                  style={{ width: 80, height: 80, borderRadius: 30 }}
-                ></Image>
-              </IconIndicatorC>
-              <View style={{ width: 250 }}>
-                <Text style={styles.iconItemRef}>Facundo Momigliano</Text>
-                <Text style={styles.iconItemDesc}>
-                  Suspendisse ullamcorper nisi a ultrices porta.
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.userProfile}>
-            <View style={{ flexDirection: "row", flex: 1 }}>
-              <IconIndicatorC
-                style={{ marginLeft: 20, backgroundColor: colors.smoke }}
-              >
-                <Image
-                  source={require("../../assets/images/saul.jpeg")}
-                  style={{ width: 80, height: 80, borderRadius: 30 }}
-                ></Image>
-              </IconIndicatorC>
-              <View style={{ width: 250 }}>
-                <Text style={styles.iconItemRef}>Saul Israel</Text>
-                <Text style={styles.iconItemDesc}>
-                  Suspendisse ullamcorper nisi a ultrices porta.
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          ))}
           <View style={{ marginTop: 20 }} />
         </ScrollView>
       </AreaSafe>

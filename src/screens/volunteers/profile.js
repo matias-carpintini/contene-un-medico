@@ -1,4 +1,5 @@
 import React from "react";
+import { getItemAsync, deleteItemAsync } from "expo-secure-store";
 import {
   Image,
   SafeAreaView,
@@ -7,15 +8,50 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Alert
+  Alert,
 } from "react-native";
+
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
 import { ProfileImg, TitleBar } from "../../styles/styled";
 import styles from "../../styles/styles";
+import bridge from "../../helpers/bridge";
 
 export default class VolunteerProfileScreen extends React.Component {
+  state = {
+    token: "",
+    user: {
+      state: 0,
+      img: "",
+      key: "",
+      id_medics: [],
+      is_doctor: false,
+      user_role: "",
+      _id: "",
+      full_name: "",
+      level_of_studies: "",
+      profession: "",
+      home: "",
+      gender: "",
+      email: "",
+      phone: "",
+      country: "",
+      nationality: "",
+      birthdate: "",
+      resume: "",
+      courses: "",
+      workspace: "",
+      position: "",
+      childs: 0,
+      marital_status: "",
+      people_you_live_with: 0,
+      dependents: "",
+      __v: 0,
+    },
+  };
+
   createForgetMeAlert = () => {
+    const { token } = this.state;
     Alert.alert(
       "Estás seguro?",
       "Esta acción no puede ser revertida",
@@ -23,14 +59,25 @@ export default class VolunteerProfileScreen extends React.Component {
         {
           text: "No, cancelar",
           onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
+          style: "cancel",
         },
-        { text: "Sí, olvídame", onPress: () => console.log("OK Pressed") }
+        {
+          text: "Sí, olvídame",
+          onPress: () => {
+            bridge
+              .deleteUser(token)
+              .then((response) => {
+                deleteItemAsync(token);
+              })
+              .then(() => deleteItemAsync("user"))
+              .then(() => this.props.navigation.navigate("VolunteerWelcome"));
+          },
+        },
       ],
       { cancelable: false }
     );
-  }
-  
+  };
+
   back = () => {
     this.props.navigation.navigate("VolunteerFeed");
   };
@@ -40,16 +87,33 @@ export default class VolunteerProfileScreen extends React.Component {
   };
 
   logout = () => {
-    this.props.navigation.navigate("Welcome");
+    deleteItemAsync("user")
+      .then(() => deleteItemAsync("token"))
+      .then(this.props.navigation.navigate("VolunteerWelcome"));
   };
 
+  componentDidMount() {
+    const { user } = this.state;
+    if (!user.email) {
+      getItemAsync("user").then((userData) =>
+        this.setState({ user: JSON.parse(userData) })
+      );
+    }
+    if (!user.token) {
+      getItemAsync("token").then((savedToken) =>
+        this.setState({ token: savedToken })
+      );
+    }
+  }
+
   render() {
+    const { user, token } = this.state;
     return (
       <SafeAreaView
         style={{
           backgroundColor: colors.white,
           flexDirection: "column",
-          flex: 1
+          flex: 1,
         }}
       >
         <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
@@ -74,67 +138,68 @@ export default class VolunteerProfileScreen extends React.Component {
                 marginTop: 30,
                 backgroundColor: colors.lightBlue,
                 width: 150,
-                height: 150
+                height: 150,
               }}
             >
-              <Image
-                source={require("../../assets/images/matias.png")}
-                style={{ width: 150, height: 150 }}
-              />
+              {user.img ? (
+                <Image
+                  resizeMethod="scale"
+                  source={{ uri: user.img }}
+                  style={{ width: 150, height: 150 }}
+                />
+              ) : null}
             </ProfileImg>
             <View style={{ alignItems: "center" }}>
-              <Text style={styles.cardDetailsTitle}>Matias Carpintini</Text>
+              <Text style={styles.cardDetailsTitle}>{user.full_name}</Text>
             </View>
             <View
               style={{
                 alignItems: "flex-start",
                 marginVertical: 10,
-                paddingHorizontal: 22
+                paddingHorizontal: 22,
               }}
             >
               <Text style={styles.dateReference}>Número de teléfono</Text>
-              <Text style={styles.dateDetails}>+54 11-22544456</Text>
+              <Text style={styles.dateDetails}>{user.phone}</Text>
 
               <Text style={styles.dateReference}>Correo electrónico</Text>
-              <Text style={styles.dateDetails}>carpintinimatias@gmail.com</Text>
+              <Text style={styles.dateDetails}>{user.email}</Text>
 
               <Text style={styles.dateReference}>Domicilio</Text>
-              <Text style={styles.dateDetails}>
-                Bolivar 1054, San Telmo, Buenos Aires, Argentina.
-              </Text>
+              <Text style={styles.dateDetails}>{user.home}</Text>
 
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.dateReference}>Nacionalidad</Text>
-                  <Text style={styles.dateDetails}>Argentina</Text>
+                  <Text style={styles.dateDetails}>{user.nationality}</Text>
                 </View>
+
                 <View style={{ flex: 1 }}>
                   <Text style={styles.dateReference}>Idioma</Text>
-                  <Text style={styles.dateDetails}>Español</Text>
+                  <Text style={styles.dateDetails}>{user.lang}</Text>
                 </View>
               </View>
 
               <Text style={styles.dateReference}>Nivel de estudio</Text>
-              <Text style={styles.dateDetails}>
-                Eduación secundaria completa
-              </Text>
+              <Text style={styles.dateDetails}>{user.level_of_studies}</Text>
 
               <Text style={styles.dateReference}>Profesión</Text>
-              <Text style={styles.dateDetails}>Fullstack web dev.</Text>
+              <Text style={styles.dateDetails}>{user.profession}</Text>
 
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.dateReference}>Edad</Text>
-                  <Text style={styles.dateDetails}>18 Años</Text>
+                  <Text style={styles.dateReference}>Nacimiento</Text>
+                  <Text style={styles.dateDetails}>{user.birthdate}</Text>
                 </View>
+
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.dateReference}>Sexo</Text>
-                  <Text style={styles.dateDetails}>Hombre</Text>
+                  <Text style={styles.dateReference}>Género</Text>
+                  <Text style={styles.dateDetails}>{user.gender}</Text>
                 </View>
               </View>
-
+              
               <Text style={styles.dateReference}>DNI</Text>
-              <Text style={styles.dateDetails}>43.589.435</Text>
+              <Text style={styles.dateDetails}>{user.dni}</Text>
 
               <TouchableOpacity
                 style={[
@@ -143,8 +208,8 @@ export default class VolunteerProfileScreen extends React.Component {
                     backgroundColor: colors.green,
                     width: "100%",
                     paddingHorizontal: 20,
-                    marginTop: 20
-                  }
+                    marginTop: 20,
+                  },
                 ]}
                 onPress={this.logout}
               >
@@ -153,7 +218,7 @@ export default class VolunteerProfileScreen extends React.Component {
                     fontFamily: "Kastelov--Axiforma-Medium",
                     textAlign: "center",
                     fontSize: 12,
-                    color: colors.white
+                    color: colors.white,
                   }}
                 >
                   Cerrar sesión
@@ -168,7 +233,7 @@ export default class VolunteerProfileScreen extends React.Component {
                 fontFamily: "Kastelov--Axiforma-Medium",
                 fontSize: 14,
                 color: colors.darkRed,
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               Eliminar mi cuenta

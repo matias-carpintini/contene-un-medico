@@ -14,7 +14,7 @@ export const TitleBarMenuIcons = styled.View`
 export const TitleBar = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: 16px;
   margin-right: 16px;
 `;
@@ -126,6 +126,6 @@ export const TitleBarPosition = styled.View`
   justify-content: space-between;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 10px;
 `;

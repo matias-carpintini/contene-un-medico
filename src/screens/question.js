@@ -5,15 +5,23 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Image
+  Image,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import colors from "../styles/colors";
 import styles from "../styles/styles";
 
 export default class QuestionScreen extends React.Component {
-  welcome = () => {
-    this.props.navigation.navigate("Welcome");
+  constructor(props) {
+    super(props);
+  }
+
+  welcomeUser = () => {
+    this.props.navigation.navigate("UserWelcome");
+  };
+
+  welcomeVolunteer = () => {
+    this.props.navigation.navigate("VolunteerWelcome");
   };
 
   render() {
@@ -22,7 +30,7 @@ export default class QuestionScreen extends React.Component {
         style={{
           backgroundColor: colors.dark,
           flexDirection: "column",
-          flex: 1
+          flex: 1,
         }}
       >
         <StatusBar backgroundColor={colors.dark} barStyle="white-content" />
@@ -32,20 +40,20 @@ export default class QuestionScreen extends React.Component {
             flex: 1,
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Image
             source={require("../assets/images/aquiestoy.png")}
             style={{
               resizeMode: "contain",
-              width: 150
+              width: 150,
             }}
           />
           <Text
             style={[
               styles.description,
-              { color: colors.white, fontSize: 17, marginTop: 0 }
+              { color: colors.white, fontSize: 17, marginTop: 0 },
             ]}
           >
             Cómo quieres usar la app?
@@ -53,15 +61,15 @@ export default class QuestionScreen extends React.Component {
           <TouchableOpacity
             style={[
               styles.loginButton,
-              { backgroundColor: colors.blue, marginBottom: 10 }
+              { backgroundColor: colors.blue, marginBottom: 10 },
             ]}
-            onPress={this.welcome}
+            onPress={() => this.welcomeUser()}
           >
             <View
               style={{
                 justifyContent: "space-between",
                 flexDirection: "row",
-                paddingHorizontal: 20
+                paddingHorizontal: 20,
               }}
             >
               <Text
@@ -69,7 +77,7 @@ export default class QuestionScreen extends React.Component {
                   fontFamily: "Kastelov--Axiforma-Bold",
                   color: "white",
                   textAlign: "center",
-                  fontSize: 15
+                  fontSize: 15,
                 }}
               >
                 Personal de la salud
@@ -80,17 +88,20 @@ export default class QuestionScreen extends React.Component {
                 style={{
                   fontFamily: "Kastelov--Axiforma-Bold",
                   color: "white",
-                  textAlign: "center"
+                  textAlign: "center",
                 }}
               />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.loginButton]} onPress={this.welcome}>
+          <TouchableOpacity
+            style={[styles.loginButton]}
+            onPress={() => this.welcomeVolunteer()}
+          >
             <View
               style={{
                 justifyContent: "space-between",
                 flexDirection: "row",
-                paddingHorizontal: 20
+                paddingHorizontal: 20,
               }}
             >
               <Text
@@ -98,7 +109,7 @@ export default class QuestionScreen extends React.Component {
                   fontFamily: "Kastelov--Axiforma-Bold",
                   color: "white",
                   textAlign: "center",
-                  fontSize: 15
+                  fontSize: 15,
                 }}
               >
                 Voluntario de la escucha
@@ -109,7 +120,7 @@ export default class QuestionScreen extends React.Component {
                 style={{
                   fontFamily: "Kastelov--Axiforma-Bold",
                   color: "white",
-                  textAlign: "center"
+                  textAlign: "center",
                 }}
               />
             </View>

@@ -24,8 +24,8 @@ const bridge = async (endpoint, body = "", method = "POST", token = "") => {
   return await fetch(`${host}${endpoint}`, {
     method,
     headers,
-    body
-  }).then(response => response.json());
+    body,
+  }).then((response) => response.json());
 };
 
 /**
@@ -42,7 +42,7 @@ const bridge = async (endpoint, body = "", method = "POST", token = "") => {
  * });
  */
 
-const getUsers = async token => {
+const getUsers = async (token) => {
   return await bridge("/getUsers", "", "GET", token);
 };
 
@@ -54,7 +54,7 @@ const getUsers = async token => {
  * @returns {Object|Any} - The server response
  */
 
-const deleteUser = async token => {
+const deleteUser = async (token) => {
   return await bridge("/deleteUser", "", "DELETE", token);
 };
 
@@ -96,31 +96,34 @@ const loginUser = async (email, password) => {
  * import bridge from ("path/to/src/helpers/bridge");
  *
  * const user = {
- *   full_name: "emmanuelle",
- *   level_of_studies: "bachillerato",
- *   profession: "developer",
- *   home: "cdmx",
- *   phone: "9992387676",
- *   email: "1@gmail.com",
- *   country: "mexico",
- *   password: "123",
- *   is_doctor: "false",
- *   resume: "adsadadfad12esd",
- *   courses: "sasdfsa",
- *   nationality: "Mexicano",
- *   workspace: "asfasd",
- *   position: "asfasd",
- *   childs: "0",
- *   marital_status: "Soltero",
- *   people_live_with_you: "3",
- *   dependents: "124e12"
+ *  full_name: "",
+ *  level_of_studies: "",
+ *  profession: "",
+ *  phone: "",
+ *  email: "",
+ *  birthdate: "",
+ *  gender: "",
+ *  dni: "",
+ *  home: "",
+ *  country: "Argentina",
+ *  nationality: "Argentina",
+ *  password: "",
+ *  is_doctor: false,
+ *  resume: "NOT IN UI",
+ *  courses: "NOT IN UI",
+ *  workspace: "NOT IN UI",
+ *  position: "NOT IN UI",
+ *  childs: "NOT IN UI",
+ *  marital_status: "NOT IN UI",
+ *  people_live_with_you: "NOT IN UI",
+ *  dependents: "NOT IN UI",
  * }
  *
  * bridge.createUser(user).then(response => {
  *   console.log(response);
  * });
  */
-const createUser = async user => {
+const createUser = async (user) => {
   const body = new URLSearchParams(user).toString();
   return await bridge("/createUser", body);
 };
@@ -206,7 +209,7 @@ const rejectFriendRequest = async (token, id) => {
  * @param {string} token - User token
  */
 
-const getVoluntaries = async token => {
+const getVoluntaries = async (token) => {
   return await bridge(`/getVoluntaries`, "", "GET", token);
 };
 
@@ -215,7 +218,7 @@ const getVoluntaries = async token => {
  * @param {string} token - User token
  */
 
-const getFriendRequests = async token => {
+const getFriendRequests = async (token) => {
   return await bridge(`/getFriendRequests`, "", "GET", token);
 };
 
@@ -242,5 +245,5 @@ export {
   rejectFriendRequest,
   getVoluntaries,
   getFriendRequests,
-  getUserById
+  getUserById,
 };
