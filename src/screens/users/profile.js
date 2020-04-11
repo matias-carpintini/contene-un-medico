@@ -71,7 +71,7 @@ export default class UserProfileScreen extends React.Component {
                 deleteItemAsync(token);
               })
               .then(() => deleteItemAsync("user"))
-              .then(() => this.props.navigation.navigate("UserWelcome"));
+              .then(() => this.props.navigation.navigate("Question"));
           },
         },
       ],
@@ -90,7 +90,7 @@ export default class UserProfileScreen extends React.Component {
   logout = () => {
     deleteItemAsync("user")
       .then(() => deleteItemAsync("token"))
-      .then(this.props.navigation.navigate("UserWelcome"));
+      .then(this.props.navigation.navigate("Question"));
   };
 
   componentDidMount() {

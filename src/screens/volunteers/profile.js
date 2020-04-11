@@ -70,7 +70,7 @@ export default class VolunteerProfileScreen extends React.Component {
                 deleteItemAsync(token);
               })
               .then(() => deleteItemAsync("user"))
-              .then(() => this.props.navigation.navigate("VolunteerWelcome"));
+              .then(() => this.props.navigation.navigate("Question"));
           },
         },
       ],
@@ -89,7 +89,7 @@ export default class VolunteerProfileScreen extends React.Component {
   logout = () => {
     deleteItemAsync("user")
       .then(() => deleteItemAsync("token"))
-      .then(this.props.navigation.navigate("VolunteerWelcome"));
+      .then(this.props.navigation.navigate("Question"));
   };
 
   componentDidMount() {
