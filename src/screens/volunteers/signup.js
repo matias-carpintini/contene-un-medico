@@ -36,7 +36,7 @@ export default VolunteerSignUpScreen = (props) => {
     nationality: "Argentina",
     resume: "",
     password: "",
-    is_doctor: false
+    is_health_professional: false,
   });
 
   const submit = () => {
@@ -44,7 +44,7 @@ export default VolunteerSignUpScreen = (props) => {
       if (response.status) {
         setItemAsync("user", JSON.stringify(response.User))
           .then(() => setItemAsync("token", JSON.stringify(response.token)))
-          .then(() => props.navigation.navigate("VolunteerFeed"));
+          .then(() => props.navigation.navigate("Question"));
       } else {
         console.log("error", response);
       }
@@ -211,11 +211,11 @@ export default VolunteerSignUpScreen = (props) => {
                       },
                     ]}
                     placeholder="12/10/2001"
-                    value={formData.birthdate}
+                    value={formData.birthday}
                     onChange={(event) =>
                       setFormData({
                         ...formData,
-                        birthdate: event.nativeEvent.text,
+                        birthday: event.nativeEvent.text,
                       })
                     }
                   ></TextInput>
@@ -240,8 +240,8 @@ export default VolunteerSignUpScreen = (props) => {
                         setFormData({ ...formData, gender: value });
                       }}
                     >
-                      <Picker.Item label="Hombre" value="hombre" />
-                      <Picker.Item label="Mujer" value="mujer" />
+                      <Picker.Item label="Hombre" value="H" />
+                      <Picker.Item label="Mujer" value="M" />
                     </Picker>
                   </View>
                 </View>
@@ -258,7 +258,7 @@ export default VolunteerSignUpScreen = (props) => {
                   backgroundColor: colors.smoke,
                   borderRadius: 10,
                   height: 48,
-                  width: "90%"
+                  width: "90%",
                 }}
               >
                 <Picker

@@ -5,7 +5,7 @@ import {
   StatusBar,
   TouchableOpacity,
   View,
-  Text
+  Text,
 } from "react-native";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
@@ -14,21 +14,21 @@ import {
   IconView,
   TitleBarMenuIcons,
   TitleBarPosition,
-  IconIndicatorC
+  IconIndicatorC,
 } from "../../styles/styled";
 import styles from "../../styles/styles";
 import bridge from "../../helpers/bridge";
 
 export default class UserFeedScreen extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-      users: []
-    }
+      users: [],
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const { token } = this.state;
     bridge
       .getUsers(token)
@@ -157,7 +157,7 @@ export default class UserFeedScreen extends React.Component {
           >
             #EmpatiaParaHeroes
           </Text>
-          {this.state.users.map((user, id) => (
+          {/* {this.state.users.map((user, id) => (
             <TouchableOpacity onPress={() => this.userProfile(user)} key={id}>
               <View style={{ flexDirection: "row", flex: 1 }}>
                 <IconIndicatorC
@@ -183,7 +183,7 @@ export default class UserFeedScreen extends React.Component {
                 </View>
               </View>
             </TouchableOpacity>
-          ))}
+          ))} */}
           <View style={{ marginTop: 20 }} />
         </ScrollView>
       </AreaSafe>

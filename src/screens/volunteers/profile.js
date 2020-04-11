@@ -25,7 +25,7 @@ export default class VolunteerProfileScreen extends React.Component {
       img: "",
       key: "",
       id_medics: [],
-      is_doctor: false,
+      is_health_professional: false,
       user_role: "",
       _id: "",
       full_name: "",
@@ -189,7 +189,7 @@ export default class VolunteerProfileScreen extends React.Component {
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.dateReference}>Nacimiento</Text>
-                  <Text style={styles.dateDetails}>{user.birthdate}</Text>
+                  <Text style={styles.dateDetails}>{user.birthday}</Text>
                 </View>
 
                 <View style={{ flex: 1 }}>
@@ -197,7 +197,7 @@ export default class VolunteerProfileScreen extends React.Component {
                   <Text style={styles.dateDetails}>{user.gender}</Text>
                 </View>
               </View>
-              
+
               <Text style={styles.dateReference}>DNI</Text>
               <Text style={styles.dateDetails}>{user.dni}</Text>
 

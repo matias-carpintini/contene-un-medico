@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
   CheckBox,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from "react-native";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
@@ -32,7 +32,7 @@ export default class VolunteerProfileEditScreen extends React.Component {
         style={{
           backgroundColor: colors.white,
           flexDirection: "column",
-          flex: 1
+          flex: 1,
         }}
       >
         <KeyboardAvoidingView
@@ -59,7 +59,7 @@ export default class VolunteerProfileEditScreen extends React.Component {
                   marginTop: 30,
                   backgroundColor: colors.lightBlue,
                   width: 150,
-                  height: 150
+                  height: 150,
                 }}
               >
                 <Image
@@ -72,7 +72,7 @@ export default class VolunteerProfileEditScreen extends React.Component {
                   style={{
                     marginTop: 20,
                     fontFamily: "Kastelov--Axiforma-Bold",
-                    fontSize: 18
+                    fontSize: 18,
                   }}
                 >
                   Foto de perfil
@@ -83,33 +83,46 @@ export default class VolunteerProfileEditScreen extends React.Component {
                 style={{
                   alignItems: "flex-start",
                   marginVertical: 10,
-                  paddingHorizontal: 22
+                  paddingHorizontal: 22,
                 }}
               >
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { marginTop: 20, backgroundColor: colors.white, width: "100%" }
+                    {
+                      marginTop: 20,
+                      backgroundColor: colors.white,
+                      width: "100%",
+                    },
                   ]}
                   placeholder="Nombre y Apellido"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[
+                    styles.loginInput,
+                    { backgroundColor: colors.white, width: "100%" },
+                  ]}
                   placeholder="Correo electrónico"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[
+                    styles.loginInput,
+                    { backgroundColor: colors.white, width: "100%" },
+                  ]}
                   placeholder="Domicilio"
                 ></TextInput>
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[
+                    styles.loginInput,
+                    { backgroundColor: colors.white, width: "100%" },
+                  ]}
                   placeholder="Teléfono de contacto"
                 ></TextInput>
 
@@ -120,13 +133,15 @@ export default class VolunteerProfileEditScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.white,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
                     placeholder="Nacionalidad"
-                    selectedValue={(this.state && this.state.pickerValue) || "a"}
-                    onValueChange={value => {
+                    selectedValue={
+                      (this.state && this.state.pickerValue) || "a"
+                    }
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -142,7 +157,10 @@ export default class VolunteerProfileEditScreen extends React.Component {
                       label="Antigua y Barbuda"
                       value="Antigua y Barbuda"
                     />
-                    <Picker.Item label="Arabia Saudita" value="Arabia Saudita" />
+                    <Picker.Item
+                      label="Arabia Saudita"
+                      value="Arabia Saudita"
+                    />
                     <Picker.Item label="Argentina" value="Argentina" />
                     <Picker.Item label="Armenia" value="Armenia" />
                     <Picker.Item label="Aruba" value="Aruba" />
@@ -268,14 +286,20 @@ export default class VolunteerProfileEditScreen extends React.Component {
                     />
                     <Picker.Item label="Isla Norfolk" value="Isla Norfolk" />
                     <Picker.Item label="Islandia" value="Islandia" />
-                    <Picker.Item label="Islas Bermudas" value="Islas Bermudas" />
+                    <Picker.Item
+                      label="Islas Bermudas"
+                      value="Islas Bermudas"
+                    />
                     <Picker.Item label="Islas Caimán" value="Islas Caimán" />
                     <Picker.Item
                       label="Islas Cocos (Keeling)"
                       value="Islas Cocos (Keeling)"
                     />
                     <Picker.Item label="Islas Cook" value="Islas Cook" />
-                    <Picker.Item label="Islas de Åland" value="Islas de Åland" />
+                    <Picker.Item
+                      label="Islas de Åland"
+                      value="Islas de Åland"
+                    />
                     <Picker.Item label="Islas Feroe" value="Islas Feroe" />
                     <Picker.Item
                       label="Islas Georgias del Sur y Sandwich del Sur"
@@ -285,14 +309,26 @@ export default class VolunteerProfileEditScreen extends React.Component {
                       label="Islas Heard y McDonald"
                       value="Islas Heard y McDonald"
                     />
-                    <Picker.Item label="Islas Maldivas" value="Islas Maldivas" />
-                    <Picker.Item label="Islas Malvinas" value="Islas Malvinas" />
+                    <Picker.Item
+                      label="Islas Maldivas"
+                      value="Islas Maldivas"
+                    />
+                    <Picker.Item
+                      label="Islas Malvinas"
+                      value="Islas Malvinas"
+                    />
                     <Picker.Item
                       label="Islas Marianas del Norte"
                       value="Islas Marianas del Norte"
                     />
-                    <Picker.Item label="Islas Marshall" value="Islas Marshall" />
-                    <Picker.Item label="Islas Pitcairn" value="Islas Pitcairn" />
+                    <Picker.Item
+                      label="Islas Marshall"
+                      value="Islas Marshall"
+                    />
+                    <Picker.Item
+                      label="Islas Pitcairn"
+                      value="Islas Pitcairn"
+                    />
                     <Picker.Item label="Islas Salomón" value="Islas Salomón" />
                     <Picker.Item
                       label="Islas Turcas y Caicos"
@@ -468,7 +504,10 @@ export default class VolunteerProfileEditScreen extends React.Component {
                       label="Territorios Australes y Antárticas Franceses"
                       value="Territorios Australes y Antárticas Franceses"
                     />
-                    <Picker.Item label="Timor Oriental" value="Timor Oriental" />
+                    <Picker.Item
+                      label="Timor Oriental"
+                      value="Timor Oriental"
+                    />
                     <Picker.Item label="Togo" value="Togo" />
                     <Picker.Item label="Tokelau" value="Tokelau" />
                     <Picker.Item label="Tonga" value="Tonga" />
@@ -505,13 +544,15 @@ export default class VolunteerProfileEditScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.white,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
                     placeholder="Idioma"
-                    selectedValue={(this.state && this.state.pickerValue) || "a"}
-                    onValueChange={value => {
+                    selectedValue={
+                      (this.state && this.state.pickerValue) || "a"
+                    }
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -559,7 +600,10 @@ export default class VolunteerProfileEditScreen extends React.Component {
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[
+                    styles.loginInput,
+                    { backgroundColor: colors.white, width: "100%" },
+                  ]}
                   placeholder="Nivel de estudio"
                 ></TextInput>
 
@@ -570,13 +614,15 @@ export default class VolunteerProfileEditScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.white,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
                     placeholder="Profesión"
-                    selectedValue={(this.state && this.state.pickerValue) || "a"}
-                    onValueChange={value => {
+                    selectedValue={
+                      (this.state && this.state.pickerValue) || "a"
+                    }
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -618,7 +664,7 @@ export default class VolunteerProfileEditScreen extends React.Component {
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.white }
+                        { backgroundColor: colors.white },
                       ]}
                       placeholder="Edad"
                     ></TextInput>
@@ -631,7 +677,7 @@ export default class VolunteerProfileEditScreen extends React.Component {
                         width: "100%",
                         backgroundColor: colors.white,
                         borderRadius: 10,
-                        height: 48
+                        height: 48,
                       }}
                     >
                       <Picker
@@ -639,12 +685,12 @@ export default class VolunteerProfileEditScreen extends React.Component {
                         selectedValue={
                           (this.state && this.state.pickerValue) || "a"
                         }
-                        onValueChange={value => {
+                        onValueChange={(value) => {
                           this.setState({ pickerValue: value });
                         }}
                       >
-                        <Picker.Item label="Hombre" value="hombre" />
-                        <Picker.Item label="Mujer" value="mujer" />
+                        <Picker.Item label="Hombre" value="H" />
+                        <Picker.Item label="Mujer" value="M" />
                       </Picker>
                     </View>
                   </View>
@@ -653,7 +699,10 @@ export default class VolunteerProfileEditScreen extends React.Component {
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
                   secureTextEntry={true}
-                  style={[styles.loginInput, { backgroundColor: colors.white, width: "100%" }]}
+                  style={[
+                    styles.loginInput,
+                    { backgroundColor: colors.white, width: "100%" },
+                  ]}
                   placeholder="Contraseña"
                   collapsable={true}
                 ></TextInput>
@@ -666,8 +715,8 @@ export default class VolunteerProfileEditScreen extends React.Component {
                         backgroundColor: colors.green,
                         width: "auto",
                         paddingHorizontal: 20,
-                        marginTop: 20
-                      }
+                        marginTop: 20,
+                      },
                     ]}
                     onPress={this.submit}
                   >
@@ -676,7 +725,7 @@ export default class VolunteerProfileEditScreen extends React.Component {
                         fontFamily: "Kastelov--Axiforma-Bold",
                         textAlign: "center",
                         fontSize: 15,
-                        color: colors.white
+                        color: colors.white,
                       }}
                     >
                       Guardar cambios

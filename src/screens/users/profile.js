@@ -25,7 +25,7 @@ export default class UserProfileScreen extends React.Component {
       img: "",
       key: "",
       id_medics: [],
-      is_doctor: false,
+      is_health_professional: true,
       user_role: "",
       _id: "",
       full_name: "",
@@ -190,7 +190,7 @@ export default class UserProfileScreen extends React.Component {
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.dateReference}>Nacimiento</Text>
-                  <Text style={styles.dateDetails}>{user.birthdate}</Text>
+                  <Text style={styles.dateDetails}>{user.birthday}</Text>
                 </View>
 
                 <View style={{ flex: 1 }}>

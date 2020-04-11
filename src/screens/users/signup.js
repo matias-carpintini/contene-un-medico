@@ -20,11 +20,14 @@ import colors from "../../styles/colors";
 import styles from "../../styles/styles";
 
 export default UserSignUpScreen = (props) => {
+  const [buttonText, setButtonText] = React.useState("Crear cuenta");
+  const [buttonStatus, setButtonStatus] = React.useState(true);
   const [validateTerms, setValidateTerms] = React.useState(false);
   const [formData, setFormData] = React.useState({
     full_name: "",
     level_of_studies: "",
     profession: "",
+    is_health_professional: true,
     phone: "",
     email: "",
     birthdate: "",
@@ -36,7 +39,6 @@ export default UserSignUpScreen = (props) => {
     nationality: "Argentina",
     help_reasson: "",
     password: "",
-    is_doctor: true,
     resume: "",
     courses: "",
     workspace: "",
@@ -48,12 +50,16 @@ export default UserSignUpScreen = (props) => {
   });
 
   const submit = () => {
+    setButtonStatus(true);
+    setButtonText("Creando cuenta");
     bridge.createUser(formData).then((response) => {
       if (response.status) {
         setItemAsync("user", JSON.stringify(response.User))
           .then(() => setItemAsync("token", JSON.stringify(response.token)))
-          .then(() => props.navigation.navigate("UserFeed"));
+          .then(() => props.navigation.navigate("Question"));
       } else {
+        setButtonText("Crear cuenta");
+        setButtonStatus(!validateTerms);
         console.log("error", response);
       }
     });
@@ -215,11 +221,11 @@ export default UserSignUpScreen = (props) => {
                       },
                     ]}
                     placeholder="12/10/2001"
-                    value={formData.birthdate}
+                    value={formData.birthday}
                     onChange={(event) =>
                       setFormData({
                         ...formData,
-                        birthdate: event.nativeEvent.text,
+                        birthday: event.nativeEvent.text,
                       })
                     }
                   ></TextInput>
@@ -244,8 +250,8 @@ export default UserSignUpScreen = (props) => {
                         setFormData({ ...formData, gender: value });
                       }}
                     >
-                      <Picker.Item label="Hombre" value="hombre" />
-                      <Picker.Item label="Mujer" value="mujer" />
+                      <Picker.Item label="Hombre" value="H" />
+                      <Picker.Item label="Mujer" value="M" />
                     </Picker>
                   </View>
                 </View>
@@ -648,7 +654,12 @@ export default UserSignUpScreen = (props) => {
                 }
               />
               <TouchableOpacity
-                onPress={() => setValidateTerms(!validateTerms)}
+                onPress={() => {
+                  setValidateTerms((previous) => {
+                    setValidateTerms(!previous);
+                    setButtonStatus(previous);
+                  });
+                }}
               >
                 <Text
                   style={{
@@ -658,20 +669,31 @@ export default UserSignUpScreen = (props) => {
                   }}
                 >
                   Acepto los{" "}
-                  <Text style={{ color: colors.gray }}>
+                  <Text
+                    style={
+                      validateTerms
+                        ? {
+                            color: colors.green,
+                            textDecorationLine: "underline",
+                          }
+                        : {
+                            color: colors.gray,
+                          }
+                    }
+                  >
                     términos y condiciones
                   </Text>
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[
-                  validateTerms
+                  validateTerms && !buttonStatus
                     ? styles.signUpButton
                     : styles.diasbledSignUpButton,
                   { marginBottom: 30, marginTop: 10 },
                 ]}
                 onPress={submit}
-                disabled={!validateTerms}
+                disabled={buttonStatus}
               >
                 <Text
                   style={{
@@ -682,7 +704,7 @@ export default UserSignUpScreen = (props) => {
                     color: colors.white,
                   }}
                 >
-                  Crear cuenta
+                  {buttonText}
                 </Text>
               </TouchableOpacity>
             </View>

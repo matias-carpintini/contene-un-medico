@@ -81,7 +81,7 @@ const loginUser = async (email, password) => {
  * @param {string} user.email
  * @param {string} user.country
  * @param {string} user.password
- * @param {string} user.is_doctor
+ * @param {string} user.is_health_professional
  * @param {string} user.resume
  * @param {string} user.courses
  * @param {string} user.nationality
@@ -101,14 +101,14 @@ const loginUser = async (email, password) => {
  *  profession: "",
  *  phone: "",
  *  email: "",
- *  birthdate: "",
+ *  birthday: "",
  *  gender: "",
  *  dni: "",
  *  home: "",
  *  country: "Argentina",
  *  nationality: "Argentina",
  *  password: "",
- *  is_doctor: false,
+ *  is_health_professional: false,
  *  resume: "NOT IN UI",
  *  courses: "NOT IN UI",
  *  workspace: "NOT IN UI",

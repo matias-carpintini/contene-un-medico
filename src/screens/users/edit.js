@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
   CheckBox,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from "react-native";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
@@ -23,7 +23,7 @@ export default class UserProfileEditScreen extends React.Component {
   };
 
   submit = () => {
-    this.props.navigation.navigate("UserProfile")
+    this.props.navigation.navigate("UserProfile");
   };
 
   render() {
@@ -32,7 +32,7 @@ export default class UserProfileEditScreen extends React.Component {
         style={{
           backgroundColor: colors.white,
           flexDirection: "column",
-          flex: 1
+          flex: 1,
         }}
       >
         <KeyboardAvoidingView
@@ -61,7 +61,7 @@ export default class UserProfileEditScreen extends React.Component {
                   marginTop: 30,
                   backgroundColor: colors.lightBlue,
                   width: 150,
-                  height: 150
+                  height: 150,
                 }}
               >
                 <Image
@@ -74,7 +74,7 @@ export default class UserProfileEditScreen extends React.Component {
                   style={{
                     marginTop: 20,
                     fontFamily: "Kastelov--Axiforma-Bold",
-                    fontSize: 18
+                    fontSize: 18,
                   }}
                 >
                   Foto de perfil
@@ -85,7 +85,7 @@ export default class UserProfileEditScreen extends React.Component {
                 style={{
                   alignItems: "flex-start",
                   marginVertical: 10,
-                  paddingHorizontal: 22
+                  paddingHorizontal: 22,
                 }}
               >
                 <TextInput
@@ -95,8 +95,8 @@ export default class UserProfileEditScreen extends React.Component {
                     {
                       marginTop: 20,
                       backgroundColor: colors.white,
-                      width: "100%"
-                    }
+                      width: "100%",
+                    },
                   ]}
                   placeholder="Nombre y Apellido"
                 ></TextInput>
@@ -105,7 +105,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.white, width: "100%" }
+                    { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Correo electrónico"
                 ></TextInput>
@@ -114,7 +114,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.white, width: "100%" }
+                    { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Domicilio"
                 ></TextInput>
@@ -123,7 +123,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.white, width: "100%" }
+                    { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Teléfono de contacto"
                 ></TextInput>
@@ -135,7 +135,7 @@ export default class UserProfileEditScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.white,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
@@ -143,7 +143,7 @@ export default class UserProfileEditScreen extends React.Component {
                     selectedValue={
                       (this.state && this.state.pickerValue) || "a"
                     }
-                    onValueChange={value => {
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -546,7 +546,7 @@ export default class UserProfileEditScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.white,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
@@ -554,7 +554,7 @@ export default class UserProfileEditScreen extends React.Component {
                     selectedValue={
                       (this.state && this.state.pickerValue) || "a"
                     }
-                    onValueChange={value => {
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -604,7 +604,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.white, width: "100%" }
+                    { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Nivel de estudio"
                 ></TextInput>
@@ -616,7 +616,7 @@ export default class UserProfileEditScreen extends React.Component {
                     justifyContent: "center",
                     backgroundColor: colors.white,
                     borderRadius: 10,
-                    height: 48
+                    height: 48,
                   }}
                 >
                   <Picker
@@ -624,7 +624,7 @@ export default class UserProfileEditScreen extends React.Component {
                     selectedValue={
                       (this.state && this.state.pickerValue) || "a"
                     }
-                    onValueChange={value => {
+                    onValueChange={(value) => {
                       this.setState({ pickerValue: value });
                     }}
                   >
@@ -666,7 +666,7 @@ export default class UserProfileEditScreen extends React.Component {
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.white }
+                        { backgroundColor: colors.white },
                       ]}
                       placeholder="Edad"
                     ></TextInput>
@@ -680,7 +680,7 @@ export default class UserProfileEditScreen extends React.Component {
                         width: "100%",
                         backgroundColor: colors.white,
                         borderRadius: 10,
-                        height: 48
+                        height: 48,
                       }}
                     >
                       <Picker
@@ -688,12 +688,12 @@ export default class UserProfileEditScreen extends React.Component {
                         selectedValue={
                           (this.state && this.state.pickerValue) || "a"
                         }
-                        onValueChange={value => {
+                        onValueChange={(value) => {
                           this.setState({ pickerValue: value });
                         }}
                       >
-                        <Picker.Item label="Hombre" value="hombre" />
-                        <Picker.Item label="Mujer" value="mujer" />
+                        <Picker.Item label="Hombre" value="H" />
+                        <Picker.Item label="Mujer" value="M" />
                       </Picker>
                     </View>
                   </View>
@@ -703,7 +703,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.white, width: "100%" }
+                    { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Lugar de trabajo"
                 />
@@ -712,7 +712,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.white, width: "100%" }
+                    { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Puesto/rol"
                 />
@@ -723,7 +723,7 @@ export default class UserProfileEditScreen extends React.Component {
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.white }
+                        { backgroundColor: colors.white },
                       ]}
                       placeholder="Estado civil"
                     />
@@ -734,7 +734,7 @@ export default class UserProfileEditScreen extends React.Component {
                       placeholderTextColor={colors.darkWhite}
                       style={[
                         styles.loginInput,
-                        { backgroundColor: colors.white, width: "100%" }
+                        { backgroundColor: colors.white, width: "100%" },
                       ]}
                       placeholder="Hijos"
                     />
@@ -745,7 +745,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.white, width: "100%" }
+                    { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Nro de personas con las que convive"
                 />
@@ -754,7 +754,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.white, width: "100%" }
+                    { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Personas a cargo"
                 />
@@ -763,7 +763,7 @@ export default class UserProfileEditScreen extends React.Component {
                   placeholderTextColor={colors.darkWhite}
                   style={[
                     styles.loginInput,
-                    { backgroundColor: colors.smoke, textAlignVertical: "top" }
+                    { backgroundColor: colors.smoke, textAlignVertical: "top" },
                   ]}
                   placeholder="Motivo por el cual solicitas contención..."
                   collapsable={true}
@@ -779,8 +779,8 @@ export default class UserProfileEditScreen extends React.Component {
                         backgroundColor: colors.green,
                         width: "auto",
                         paddingHorizontal: 20,
-                        marginTop: 20
-                      }
+                        marginTop: 20,
+                      },
                     ]}
                     onPress={this.submit}
                   >
@@ -789,7 +789,7 @@ export default class UserProfileEditScreen extends React.Component {
                         fontFamily: "Kastelov--Axiforma-Bold",
                         textAlign: "center",
                         fontSize: 15,
-                        color: colors.white
+                        color: colors.white,
                       }}
                     >
                       Guardar cambios

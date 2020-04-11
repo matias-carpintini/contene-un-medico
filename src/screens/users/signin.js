@@ -18,14 +18,15 @@ import bridge from "../../helpers/bridge";
 export default UserSignInScreen = (props) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [user, setUser] = React.useState({});
 
   const submit = () => {
     bridge.loginUser(email, password).then((response) => {
       if (response.status) {
-        setItemAsync("user", JSON.stringify(response.User));
-        setItemAsync("token", JSON.stringify(response.token));
-        props.navigation.navigate("UserFeed");
+        setItemAsync("user", JSON.stringify(response.User))
+          .then(() => setItemAsync("token", JSON.stringify(response.token)))
+          .then(() => {
+            props.navigation.navigate("Question");
+          });
       } else {
         console.log("error", response);
       }

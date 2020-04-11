@@ -176,6 +176,15 @@ const styles = {
     borderRadius: 10,
   },
 
+  warningSignUpButton: {
+    width: "80%",
+    marginTop: 30,
+    justifyContent: "center",
+    backgroundColor: colors.orange,
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
+
   pageTitle: {
     color: colors.green,
     fontFamily: "Kastelov--Axiforma-Medium",
