@@ -13,15 +13,10 @@ import {
 
 import colors from "../styles/colors";
 import styles from "../styles/styles";
-import store from "../redux/store";
 
 const QuestionScreen = (props) => {
   const { navigation } = props;
   const [user, setUser] = React.useState({});
-
-  store.subscribe(() => {
-    setUser(store.getState().user);
-  });
 
   const welcomeUser = () => {
     navigation.navigate("UserWelcome");
@@ -32,8 +27,13 @@ const QuestionScreen = (props) => {
   };
 
   React.useEffect(() => {
+    const { data } = user;
     if (user.token) {
-      props.navigation.navigate("VolunteerFeed");
+      if (data.is_health_professional) {
+        props.navigation.navigate("UserFeed");
+      } else {
+        props.navigation.navigate("VolunteerFeed");
+      }
     } else {
       getItemAsync("token").then((token) => {
         getItemAsync("user").then((user) => {
