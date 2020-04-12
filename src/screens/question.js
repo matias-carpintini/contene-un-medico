@@ -16,7 +16,7 @@ import styles from "../styles/styles";
 
 const QuestionScreen = (props) => {
   const { navigation } = props;
-  const [user, setUser] = React.useState({});
+  const [user, setUser] = React.useState({ token: "", data: {} });
 
   const welcomeUser = () => {
     navigation.navigate("UserWelcome");
@@ -41,7 +41,7 @@ const QuestionScreen = (props) => {
         });
       });
     }
-  }, [user]);
+  }, [user.token]);
 
   return (
     <SafeAreaView
