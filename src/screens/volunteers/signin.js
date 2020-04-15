@@ -28,7 +28,7 @@ export default VolunteerSignInScreen = (props) => {
         setItemAsync("user", JSON.stringify(response.User))
           .then(() => setItemAsync("token", JSON.stringify(response.token)))
           .then(() => {
-            props.navigation.navigate("Question");
+            props.navigation.navigate("VolunteerFeed");
           });
       } else {
         console.log("error", response);

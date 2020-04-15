@@ -23,7 +23,7 @@ import {
 import styles from "../../styles/styles";
 import bridge from "../../helpers/bridge";
 
-const Empty = ({ text = "No tienes a nadie en adopción 😞" }) => (
+const Empty = ({ text = "Aún no tienes ningún aliado 😞" }) => (
   <Text
     style={{
       marginHorizontal: 20,

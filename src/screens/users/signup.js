@@ -56,7 +56,7 @@ export default UserSignUpScreen = (props) => {
       if (response.status) {
         setItemAsync("user", JSON.stringify(response.User))
           .then(() => setItemAsync("token", JSON.stringify(response.token)))
-          .then(() => props.navigation.navigate("Question"));
+          .then(() => props.navigation.navigate("VolunteerFeed"));
       } else {
         setButtonText("Crear cuenta");
         setButtonStatus(!validateTerms);

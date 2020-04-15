@@ -25,7 +25,7 @@ export default UserSignInScreen = (props) => {
         setItemAsync("user", JSON.stringify(response.User))
           .then(() => setItemAsync("token", JSON.stringify(response.token)))
           .then(() => {
-            props.navigation.navigate("Question");
+            props.navigation.navigate("UserFeed");
           });
       } else {
         console.log("error", response);
