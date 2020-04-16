@@ -45,6 +45,7 @@ const Navigator = createStackNavigator(
     UserEdit: UserEdit,
   },
   {
+    initialRouteName: "Question",
     headerMode: "none",
   }
 );
@@ -68,11 +69,15 @@ export default class App extends React.Component {
   };
 
   render() {
-    const MainApp = !this.state.isLoading ? (
+    /*
+        const MainApp = !this.state.isLoading ? (
       createAppContainer(Navigator)
     ) : (
       <></>
     );
+    */
+
+    const MainApp = createAppContainer(Navigator);
     return this.state.isLoading ? <AppLoading /> : <MainApp />;
   }
 }

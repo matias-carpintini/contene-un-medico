@@ -96,9 +96,9 @@ export default class UserProfileScreen extends React.Component {
   componentDidMount() {
     const { user } = this.state;
     if (!user.email) {
-      getItemAsync("user").then((userData) =>
-        this.setState({ user: JSON.parse(userData) })
-      );
+      getItemAsync("user").then((userData) => {
+        this.setState({ user: JSON.parse(userData) });
+      });
     }
     if (!user.token) {
       getItemAsync("token").then((savedToken) =>
@@ -109,6 +109,8 @@ export default class UserProfileScreen extends React.Component {
 
   render() {
     const { user, token } = this.state;
+    console.log("profile", user.img);
+
     return (
       <SafeAreaView
         style={{
@@ -165,43 +167,59 @@ export default class UserProfileScreen extends React.Component {
 
               <Text style={styles.dateReference}>Correo electrónico</Text>
               <Text style={styles.dateDetails}>{user.email}</Text>
-
-              <Text style={styles.dateReference}>Domicilio</Text>
-              <Text style={styles.dateDetails}>{user.home}</Text>
-
+              {user.home !== " " && (
+                <View>
+                  <Text style={styles.dateReference}>Domicilio</Text>
+                  <Text style={styles.dateDetails}>{user.home}</Text>
+                </View>
+              )}
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.dateReference}>Nacionalidad</Text>
                   <Text style={styles.dateDetails}>{user.nationality}</Text>
                 </View>
-
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.dateReference}>Idioma</Text>
-                  <Text style={styles.dateDetails}>{user.lang}</Text>
-                </View>
+                {user.lang !== " " && (
+                  <View style={{ flex: 1 }}>
+                    <Text style={styles.dateReference}>Idioma</Text>
+                    <Text style={styles.dateDetails}>{user.lang}</Text>
+                  </View>
+                )}
               </View>
-
-              <Text style={styles.dateReference}>Nivel de estudio</Text>
-              <Text style={styles.dateDetails}>{user.level_of_studies}</Text>
-
-              <Text style={styles.dateReference}>Profesión</Text>
-              <Text style={styles.dateDetails}>{user.profession}</Text>
+              {user.level_of_studies !== " " && (
+                <View>
+                  <Text style={styles.dateReference}>Nivel de estudio</Text>
+                  <Text style={styles.dateDetails}>
+                    {user.level_of_studies}
+                  </Text>
+                </View>
+              )}
+              {user.profession !== " " && (
+                <View>
+                  <Text style={styles.dateReference}>Profesión</Text>
+                  <Text style={styles.dateDetails}>{user.profession}</Text>
+                </View>
+              )}
 
               <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.dateReference}>Nacimiento</Text>
-                  <Text style={styles.dateDetails}>{user.birthday}</Text>
-                </View>
-
+                {user.birthday !== "NaN/NaN/NaN" && (
+                  <View style={{ flex: 1 }}>
+                    <Text style={styles.dateReference}>Nacimiento</Text>
+                    <Text style={styles.dateDetails}>{user.birthdate}</Text>
+                  </View>
+                )}
                 <View style={{ flex: 1 }}>
                   <Text style={styles.dateReference}>Sexo</Text>
-                  <Text style={styles.dateDetails}>{user.gender}</Text>
+                  <Text style={styles.dateDetails}>
+                    {user.gender === "H" ? "Hombre" : "Mujer"}
+                  </Text>
                 </View>
               </View>
-
-              <Text style={styles.dateReference}>DNI</Text>
-              <Text style={styles.dateDetails}>{user.dni}</Text>
-
+              {user.dni !== " " && (
+                <View>
+                  <Text style={styles.dateReference}>DNI</Text>
+                  <Text style={styles.dateDetails}>{user.dni}</Text>
+                </View>
+              )}
               <TouchableOpacity
                 style={[
                   styles.signUpButton,

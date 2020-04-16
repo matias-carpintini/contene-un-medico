@@ -11,6 +11,8 @@ import {
 import styles from "../../styles/styles";
 import colors from "../../styles/colors";
 
+import { getItemAsync, setItemAsync } from "expo-secure-store";
+
 export default class UserWelcomeScreen extends React.Component {
   userSignIn = () => {
     this.props.navigation.navigate("UserSignIn");

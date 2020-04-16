@@ -16,7 +16,7 @@ const colors = {
   lightRed: "#ffc4cc",
   orange: "#FFB072",
   darkOrange: "#FC643F",
-  yellow: "#FFCE5C"
+  yellow: "#FFCE5C",
 };
 
 export default colors;

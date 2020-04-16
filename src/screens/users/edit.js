@@ -12,12 +12,21 @@ import {
   CheckBox,
   KeyboardAvoidingView,
 } from "react-native";
+
+import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
+import { deleteItemAsync, getItemAsync, setItemAsync } from "expo-secure-store";
 import SimpleLineIcon from "react-native-vector-icons/SimpleLineIcons";
 import colors from "../../styles/colors";
 import { ProfileImg, TitleBar } from "../../styles/styled";
 import styles from "../../styles/styles";
 
+import bridge from "../../helpers/bridge";
+
 export default class UserProfileEditScreen extends React.Component {
+  state = {
+    photo: require("../../assets/images/matias.png"),
+  };
   back = () => {
     this.props.navigation.navigate("UserProfile");
   };
@@ -25,7 +34,46 @@ export default class UserProfileEditScreen extends React.Component {
   submit = () => {
     this.props.navigation.navigate("UserProfile");
   };
+  //para fotografias
+  _takePick2 = async () => {
+    await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
+    const datarray = [];
+    let result = await ImagePicker.launchCameraAsync({
+      allowsEditing: false,
+      //exif: true,
+      quality: 1,
+    });
+    datarray.push({
+      uri: result.uri,
+      type: result.type + "/jpg",
+      width: result.width,
+      height: result.height,
+      cancelled: result.cancelled,
+      perro: "perro",
+    });
+    this.setState({ datapick: datarray });
+    console.log(this.state.datapick);
+    if (!result.cancelled) {
+      this.setState({ image: result.uri });
+    }
+  };
+  //para galeria (actual)
+  _takePick = async () => {
+    let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+    if (permissionResult.granted === false) {
+      alert("Permission to access camera roll is required!");
+      return;
+    }
+    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    //console.log(pickerResult.uri);
+    this.setState({ photo: { uri: pickerResult.uri } });
 
+    getItemAsync("token").then((token) => {
+      bridge.updatePhoto(token, pickerResult.uri).then((result) => {
+        console.log("_takePick", result);
+      });
+    });
+  };
   render() {
     return (
       <SafeAreaView
@@ -56,19 +104,23 @@ export default class UserProfileEditScreen extends React.Component {
 
           <ScrollView>
             <View style={styles.cardDetails}>
-              <ProfileImg
-                style={{
-                  marginTop: 30,
-                  backgroundColor: colors.lightBlue,
-                  width: 150,
-                  height: 150,
-                }}
-              >
-                <Image
-                  source={require("../../assets/images/matias.png")}
-                  style={{ width: 150, height: 150 }}
-                />
-              </ProfileImg>
+              <TouchableOpacity onPress={this._takePick}>
+                <View>
+                  <ProfileImg
+                    style={{
+                      marginTop: 30,
+                      backgroundColor: colors.lightBlue,
+                      width: 150,
+                      height: 150,
+                    }}
+                  >
+                    <Image
+                      source={this.state.photo}
+                      style={{ width: 150, height: 150 }}
+                    />
+                  </ProfileImg>
+                </View>
+              </TouchableOpacity>
               <View style={{ alignItems: "center" }}>
                 <Text
                   style={{

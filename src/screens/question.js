@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
-import { getItemAsync } from "expo-secure-store";
+import { getItemAsync, setItemAsync, deleteItemAsync } from "expo-secure-store";
 
 import {
   SafeAreaView,
@@ -28,6 +28,9 @@ const QuestionScreen = (props) => {
 
   React.useEffect(() => {
     const { data } = user;
+    //deleteItemAsync("user").then(() => deleteItemAsync("token"));
+    //console.log("question photo", data.is_health_professional);
+
     if (user.token) {
       if (data.is_health_professional) {
         props.navigation.navigate("UserFeed");
