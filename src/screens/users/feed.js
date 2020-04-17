@@ -34,6 +34,7 @@ export default UserFeedScreen = (props) => {
   React.useEffect(() => {
     getItemAsync("token").then((token) => {
       getItemAsync("user").then((user) => {
+        console.log("_takePick", JSON.parse(user));
         setUser({ token: JSON.parse(token), data: JSON.parse(user) });
       });
     });
@@ -41,6 +42,9 @@ export default UserFeedScreen = (props) => {
 
   const myProfile = () => {
     navigation.navigate("UserProfile");
+  };
+  const editProfile = () => {
+    navigation.navigate("UserEdit");
   };
 
   const requestToBeHeard = () => {
@@ -92,30 +96,49 @@ export default UserFeedScreen = (props) => {
           </View>
         </TouchableOpacity>
         <TitleBarMenuIcons>
-          <IconView>
-            <TouchableOpacity>
+          <TouchableOpacity>
+            <IconView>
               <SimpleLineIcon
                 name="support"
                 size={20}
                 style={{ marginTop: 7, color: colors.gray }}
               />
-            </TouchableOpacity>
-          </IconView>
-          <IconView>
-            <TouchableOpacity onPress={myProfile}>
+            </IconView>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={myProfile}>
+            <IconView>
               <SimpleLineIcon
                 name="user"
                 size={20}
-                style={{ marginTop: 7, color: colors.gray }}
+                style={{
+                  marginTop: 7,
+                  color: colors.gray,
+                }}
               />
-            </TouchableOpacity>
-          </IconView>
+            </IconView>
+          </TouchableOpacity>
         </TitleBarMenuIcons>
       </TitleBarPosition>
       <View style={{ alignItems: "center" }}>
         <Button disabled={heardStatus} onPress={requestToBeHeard}>
           {hearText}
         </Button>
+      </View>
+      <View style={{ alignItems: "center" }}>
+        <TouchableOpacity onPress={editProfile}>
+          <View style={{ width: "90%", height: 30, marginTop: 20 }}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontFamily: "Kastelov--Axiforma-Bold",
+                color: colors.green,
+                fontSize: 15,
+              }}
+            >
+              Completar mi perfil
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </AreaSafe>
   );

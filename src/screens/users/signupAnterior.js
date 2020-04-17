@@ -38,7 +38,7 @@ export default UserSignUpScreen = (props) => {
     country: "Argentina",
     nationality: "Argentina",
     help_reasson: " ",
-    password: "",
+    password: " ",
     resume: " ",
     courses: " ",
     workspace: " ",
@@ -56,7 +56,7 @@ export default UserSignUpScreen = (props) => {
       if (response.status) {
         setItemAsync("user", JSON.stringify(response.User))
           .then(() => setItemAsync("token", JSON.stringify(response.token)))
-          .then(() => props.navigation.navigate("UserFeed"));
+          .then(() => props.navigation.navigate("VolunteerFeed"));
       } else {
         setButtonText("Crear cuenta");
         setButtonStatus(!validateTerms);
@@ -139,7 +139,6 @@ export default UserSignUpScreen = (props) => {
                 }
                 placeholder="Matias Carpintini"
               />
-
               <View style={{ width: "90%" }}>
                 <Text style={[styles.label]}>Correo electrónico:</Text>
               </View>
@@ -163,7 +162,75 @@ export default UserSignUpScreen = (props) => {
                 }
                 keyboardType="email-address"
               />
+              <View style={{ width: "90%" }}>
+                <Text style={[styles.label]}>Dirección:</Text>
+              </View>
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  {
+                    backgroundColor: colors.smoke,
+                    marginTop: 10,
+                    marginBottom: 20,
+                  },
+                ]}
+                placeholder="Calle siempre viva 123"
+                value={formData.home}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    home: event.nativeEvent.text,
+                  })
+                }
+              />
+              <View style={{ width: "90%" }}>
+                <Text style={[styles.label]}>Documento de identidad:</Text>
+              </View>
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  {
+                    backgroundColor: colors.smoke,
+                    marginTop: 10,
+                    marginBottom: 20,
+                  },
+                ]}
+                placeholder="12.345.678"
+                value={formData.dni}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    dni: event.nativeEvent.text,
+                  })
+                }
+                keyboardType="number-pad"
+              />
               <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.label]}>Nacimiento:</Text>
+                  <TextInput
+                    placeholderTextColor={colors.darkWhite}
+                    style={[
+                      styles.loginInput,
+                      {
+                        backgroundColor: colors.smoke,
+                        marginTop: 10,
+                        marginBottom: 20,
+                      },
+                    ]}
+                    placeholder="12/10/2001"
+                    value={formData.birthday}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        birthday: event.nativeEvent.text,
+                      })
+                    }
+                  ></TextInput>
+                </View>
+
                 <View style={{ flex: 1 }}>
                   <Text style={[styles.label]}>Sexo:</Text>
                   <View
@@ -189,6 +256,37 @@ export default UserSignUpScreen = (props) => {
                   </View>
                 </View>
               </View>
+
+              <View style={{ width: "90%" }}>
+                <Text style={[styles.label]}>Idioma:</Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 10,
+                  marginBottom: 20,
+                  justifyContent: "center",
+                  backgroundColor: colors.smoke,
+                  borderRadius: 10,
+                  height: 48,
+                  width: "90%",
+                }}
+              >
+                <Picker
+                  selectedValue={formData.lang}
+                  onValueChange={(value) => {
+                    setFormData({ ...formData, lang: value });
+                  }}
+                >
+                  {languages.map((lang, index) => (
+                    <Picker.Item
+                      key={`lang-item-${index}`}
+                      label={lang.label}
+                      value={lang.value}
+                    />
+                  ))}
+                </Picker>
+              </View>
+
               <View style={{ width: "90%" }}>
                 <Text style={[styles.label]}>Teléfono de contacto:</Text>
               </View>
@@ -245,6 +343,28 @@ export default UserSignUpScreen = (props) => {
                 </Picker>
               </View>
               <View style={{ width: "90%" }}>
+                <Text style={[styles.label]}>Nivel de estudios:</Text>
+              </View>
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  {
+                    backgroundColor: colors.smoke,
+                    marginTop: 10,
+                    marginBottom: 20,
+                  },
+                ]}
+                placeholder="Secundario completo"
+                value={formData.level_of_studies}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    level_of_studies: event.nativeEvent.text,
+                  })
+                }
+              />
+              <View style={{ width: "90%" }}>
                 <Text style={[styles.label]}>Profesión:</Text>
               </View>
               <View
@@ -275,6 +395,186 @@ export default UserSignUpScreen = (props) => {
                   ))}
                 </Picker>
               </View>
+              <View style={{ width: "90%" }}>
+                <Text style={[styles.label]}>Un breve resúmen:</Text>
+              </View>
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  {
+                    backgroundColor: colors.smoke,
+                    textAlignVertical: "top",
+                    marginTop: 10,
+                    marginBottom: 20,
+                  },
+                ]}
+                placeholder="Háblanos un poco de vos :)"
+                collapsable={true}
+                multiline
+                numberOfLines={3}
+                value={formData.resume}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    resume: event.nativeEvent.text,
+                  })
+                }
+              ></TextInput>
+
+              <View style={{ width: "90%" }}>
+                <Text style={[styles.label]}>Lugar de trabajo:</Text>
+              </View>
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  {
+                    backgroundColor: colors.smoke,
+                    marginTop: 10,
+                    marginBottom: 20,
+                  },
+                ]}
+                placeholder="Hospital X..."
+                value={formData.workspace}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    workspace: event.nativeEvent.text,
+                  })
+                }
+              />
+
+              <View style={{ width: "90%" }}>
+                <Text style={[styles.label]}>Puesto/Rol:</Text>
+              </View>
+              <TextInput
+                placeholderTextColor={colors.darkWhite}
+                style={[
+                  styles.loginInput,
+                  {
+                    backgroundColor: colors.smoke,
+                    marginTop: 10,
+                    marginBottom: 20,
+                  },
+                ]}
+                placeholder="Camillero"
+                value={formData.position}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    position: event.nativeEvent.text,
+                  })
+                }
+              />
+
+              <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.label]}>Estado civil:</Text>
+                  <View
+                    style={{
+                      marginTop: 10,
+                      marginBottom: 20,
+                      justifyContent: "center",
+                      backgroundColor: colors.smoke,
+                      borderRadius: 10,
+                      height: 48,
+                      width: "90%",
+                    }}
+                  >
+                    <Picker
+                      mode={Picker.MODE_DROPDOWN}
+                      selectedValue={formData.marital_status}
+                      onValueChange={(value) => {
+                        setFormData({ ...formData, marital_status: value });
+                      }}
+                    >
+                      <Picker.Item label="Solter@" value="Solter@" />
+                      <Picker.Item label="Comprometid@" value="Comprometid@" />
+                      <Picker.Item label="En Relación" value="En Relación" />
+                      <Picker.Item label="Casad@" value="Casad@" />
+                      <Picker.Item label="Separad@" value="Separad@" />
+                      <Picker.Item label="Divorciad@" value="Divorciad@" />
+                      <Picker.Item label="Viud@" value="Viud@" />
+                      <Picker.Item label="Noviazgo" value="Noviazgo" />
+                    </Picker>
+                  </View>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.label]}>Hij@s:</Text>
+                  <TextInput
+                    placeholderTextColor={colors.darkWhite}
+                    style={[
+                      styles.loginInput,
+                      {
+                        backgroundColor: colors.smoke,
+                        marginTop: 10,
+                        marginBottom: 20,
+                        width: "100%",
+                      },
+                    ]}
+                    placeholder="0"
+                    value={formData.childs}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        childs: event.nativeEvent.text,
+                      })
+                    }
+                    keyboardType="number-pad"
+                  ></TextInput>
+                </View>
+              </View>
+
+              <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.label]}>Convivo con:</Text>
+                  <TextInput
+                    placeholderTextColor={colors.darkWhite}
+                    style={[
+                      styles.loginInput,
+                      {
+                        backgroundColor: colors.smoke,
+                        marginTop: 10,
+                        marginBottom: 20,
+                      },
+                    ]}
+                    placeholder="0 personas"
+                    value={formData.people_live_with_you}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        people_live_with_you: event.nativeEvent.text,
+                      })
+                    }
+                    keyboardType="number-pad"
+                  ></TextInput>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.label]}>Dependen de mi:</Text>
+                  <TextInput
+                    placeholderTextColor={colors.darkWhite}
+                    style={[
+                      styles.loginInput,
+                      {
+                        backgroundColor: colors.smoke,
+                        marginTop: 10,
+                        marginBottom: 20,
+                      },
+                    ]}
+                    placeholder="0 personas"
+                    value={formData.dependents}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        dependents: event.nativeEvent.text,
+                      })
+                    }
+                    keyboardType="number-pad"
+                  ></TextInput>
+                </View>
+              </View>
+
               <View style={{ width: "90%" }}>
                 <Text style={[styles.label]}>Contraseña:</Text>
               </View>

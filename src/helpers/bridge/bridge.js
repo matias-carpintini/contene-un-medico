@@ -232,6 +232,22 @@ const getUserById = async (token, id) => {
   return await bridge(`/getUserById/${id}`, "", "GET", token);
 };
 
+const updatePhoto = async (token, photo) => {
+  //const body = new URLSearchParams(photo).toString();
+  console.log("brigde token", token);
+  console.log("brigde photo", photo);
+
+  const body = {
+    image: {
+      uri: photo,
+      name: "capturamovil.jpg",
+      type: "image/jpg",
+    },
+  };
+
+  return await bridge(`/updatePhoto`, body, "POST", token);
+};
+
 export {
   getUsers,
   deleteUser,
@@ -246,4 +262,5 @@ export {
   getVoluntaries,
   getFriendRequests,
   getUserById,
+  updatePhoto,
 };
