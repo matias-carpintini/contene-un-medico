@@ -174,7 +174,7 @@ const VolunteerFeedScreen = (props) => {
             fontSize: 18,
           }}
         >
-          Tus héroes:
+          Tus aliados:
         </Text>
 
         <MyHeroes />
@@ -188,7 +188,7 @@ const VolunteerFeedScreen = (props) => {
             marginBottom: 10,
           }}
         >
-          #EmpatiaParaHeroes
+          #PorMasEmpatia
         </Text>
 
         <Heroes text="" />

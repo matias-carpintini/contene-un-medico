@@ -98,7 +98,7 @@ const QuestionScreen = (props) => {
                 fontSize: 15,
               }}
             >
-              Personal de la salud
+              Quiero ser escuchado
             </Text>
             <Icon
               name="ios-medkit"
