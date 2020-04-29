@@ -51,6 +51,7 @@ export default UserSignUpScreen = (props) => {
 
   const submit = () => {
     setButtonStatus(true);
+    if(formData.password.length < 6) return alert('La contraseña debe tener mínimo 6 caracteres');
     setButtonText("Creando cuenta");
     bridge.createUser(formData).then((response) => {
       if (response.status) {

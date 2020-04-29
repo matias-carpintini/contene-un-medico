@@ -40,6 +40,7 @@ export default VolunteerSignUpScreen = (props) => {
   });
 
   const submit = () => {
+    if(formData.password.length < 6) return alert('La contraseña debe tener mínimo 6 caracteres');
     bridge.createUser(formData).then((response) => {
       if (response.status) {
         setItemAsync("user", JSON.stringify(response.User))
