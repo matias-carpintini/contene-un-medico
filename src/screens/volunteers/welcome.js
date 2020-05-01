@@ -96,11 +96,11 @@ export default class VolunteerWelcomeScreen extends React.Component {
                   color: colors.green,
                 }}
               >
-                #EmpatiaParaHeroes
+                #RedDeEmpatíaGlobal
               </Text>
               <Text style={styles.description}>
-                Una app donde conectamos a héroes modernos con voluntarios de la
-                escucha.
+                Somos muchas personas con ganas de escucharte, de conectar, de
+                hablar. Aquí estamos. Aquí estoy.
               </Text>
               <TouchableOpacity
                 style={[styles.loginButton]}

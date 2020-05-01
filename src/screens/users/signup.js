@@ -13,8 +13,7 @@ import {
   View,
 } from "react-native";
 import countries from "../../assets/strings/countries";
-import jobs from "../../assets/strings/jobs";
-import languages from "../../assets/strings/languages";
+import help_reassons from "../../assets/strings/help_reassons";
 import bridge from "../../helpers/bridge";
 import colors from "../../styles/colors";
 import styles from "../../styles/styles";
@@ -24,40 +23,21 @@ export default UserSignUpScreen = (props) => {
   const [buttonStatus, setButtonStatus] = React.useState(true);
   const [validateTerms, setValidateTerms] = React.useState(false);
   const [formData, setFormData] = React.useState({
-    full_name: " ",
-    level_of_studies: " ",
-    profession: " ",
-    is_health_professional: true,
-    phone: " ",
-    email: " ",
-    birthdate: " ",
-    gender: "H",
-    lang: " ",
-    dni: " ",
-    home: " ",
+    email: "",
+    phone: "",
     country: "Argentina",
-    nationality: "Argentina",
-    help_reasson: " ",
+    help_reasson: "",
     password: "",
-    resume: " ",
-    courses: " ",
-    workspace: " ",
-    position: " ",
-    childs: " ",
-    marital_status: " ",
-    people_live_with_you: " ",
-    dependents: " ",
   });
 
   const submit = () => {
     setButtonStatus(true);
-    if(formData.password.length < 6) return alert('La contraseña debe tener mínimo 6 caracteres');
     setButtonText("Creando cuenta");
     bridge.createUser(formData).then((response) => {
       if (response.status) {
         setItemAsync("user", JSON.stringify(response.User))
           .then(() => setItemAsync("token", JSON.stringify(response.token)))
-          .then(() => props.navigation.navigate("UserFeed"));
+          .then(() => props.navigation.navigate("VolunteerFeed"));
       } else {
         setButtonText("Crear cuenta");
         setButtonStatus(!validateTerms);
@@ -118,32 +98,7 @@ export default UserSignUpScreen = (props) => {
             </Text>
 
             <View style={{ alignItems: "center" }}>
-              <View style={{ width: "90%" }}>
-                <Text style={[styles.label]}>Nombre y Apellido:</Text>
-              </View>
-              <TextInput
-                placeholderTextColor={colors.darkWhite}
-                style={[
-                  styles.loginInput,
-                  {
-                    backgroundColor: colors.smoke,
-                    marginTop: 10,
-                    marginBottom: 20,
-                  },
-                ]}
-                value={formData.full_name}
-                onChange={(event) =>
-                  setFormData({
-                    ...formData,
-                    full_name: event.nativeEvent.text,
-                  })
-                }
-                placeholder="Matias Carpintini"
-              />
-
-              <View style={{ width: "90%" }}>
-                <Text style={[styles.label]}>Correo electrónico:</Text>
-              </View>
+              <Text style={[styles.label]}>Correo electrónico</Text>
               <TextInput
                 placeholderTextColor={colors.darkWhite}
                 style={[
@@ -164,35 +119,8 @@ export default UserSignUpScreen = (props) => {
                 }
                 keyboardType="email-address"
               />
-              <View style={{ flex: 1, flexDirection: "row", width: "90%" }}>
-                <View style={{ flex: 1 }}>
-                  <Text style={[styles.label]}>Sexo:</Text>
-                  <View
-                    style={{
-                      marginTop: 10,
-                      marginBottom: 20,
-                      justifyContent: "center",
-                      backgroundColor: colors.smoke,
-                      borderRadius: 10,
-                      height: 48,
-                    }}
-                  >
-                    <Picker
-                      mode={Picker.MODE_DROPDOWN}
-                      selectedValue={formData.gender}
-                      onValueChange={(value) => {
-                        setFormData({ ...formData, gender: value });
-                      }}
-                    >
-                      <Picker.Item label="Hombre" value="H" />
-                      <Picker.Item label="Mujer" value="M" />
-                    </Picker>
-                  </View>
-                </View>
-              </View>
-              <View style={{ width: "90%" }}>
-                <Text style={[styles.label]}>Teléfono de contacto:</Text>
-              </View>
+
+              <Text style={[styles.label]}>WhatsApp</Text>
               <TextInput
                 placeholderTextColor={colors.darkWhite}
                 style={[
@@ -214,9 +142,7 @@ export default UserSignUpScreen = (props) => {
                 keyboardType="phone-pad"
               />
 
-              <View style={{ width: "90%" }}>
-                <Text style={[styles.label]}>País actual de residencia:</Text>
-              </View>
+              <Text style={[styles.label]}>País actual de residencia:</Text>
               <View
                 style={{
                   marginTop: 20,
@@ -230,7 +156,6 @@ export default UserSignUpScreen = (props) => {
                 }}
               >
                 <Picker
-                  mode={Picker.MODE_DROPDOWN}
                   selectedValue={formData.country}
                   onValueChange={(value) => {
                     setFormData({ ...formData, country: value });
@@ -245,9 +170,8 @@ export default UserSignUpScreen = (props) => {
                   ))}
                 </Picker>
               </View>
-              <View style={{ width: "90%" }}>
-                <Text style={[styles.label]}>Profesión:</Text>
-              </View>
+
+              <Text style={[styles.label]}>Motivo</Text>
               <View
                 style={{
                   marginTop: 20,
@@ -261,24 +185,22 @@ export default UserSignUpScreen = (props) => {
                 }}
               >
                 <Picker
-                  mode={Picker.MODE_DROPDOWN}
-                  selectedValue={formData.profession}
+                  selectedValue={formData.help_reasson}
                   onValueChange={(value) => {
-                    setFormData({ ...formData, profession: value });
+                    setFormData({ ...formData, help_reasson: value });
                   }}
                 >
-                  {jobs.map((job, index) => (
+                  {help_reassons.map((reasson, index) => (
                     <Picker.Item
-                      key={`job-item-${index}`}
-                      label={job.label}
-                      value={job.value}
+                      key={`reasson-item-${index}`}
+                      label={reasson.label}
+                      value={reasson.value}
                     />
                   ))}
                 </Picker>
               </View>
-              <View style={{ width: "90%" }}>
-                <Text style={[styles.label]}>Contraseña:</Text>
-              </View>
+
+              <Text style={[styles.label]}>Contraseña</Text>
               <TextInput
                 placeholderTextColor={colors.darkWhite}
                 secureTextEntry

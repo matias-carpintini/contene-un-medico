@@ -308,6 +308,7 @@ const styles = {
     fontSize: 12,
     fontFamily: "Kastelov--Axiforma-Medium",
     textAlign: "left",
+    width: "90%",
     color: colors.lightGray,
   },
 };

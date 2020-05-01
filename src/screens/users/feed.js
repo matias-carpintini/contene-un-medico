@@ -29,7 +29,7 @@ export default UserFeedScreen = (props) => {
   const { navigation } = props;
   const [user, setUser] = React.useState({});
   const [heardStatus, setHeardStatus] = React.useState(false);
-  const [hearText, setHeardText] = React.useState("Quiero ser escuchado");
+  const [hearText, setHeardText] = React.useState("Buscar a un aliado");
 
   React.useEffect(() => {
     getItemAsync("token").then((token) => {
@@ -68,7 +68,7 @@ export default UserFeedScreen = (props) => {
     if (heardStatus) {
       setHeardText("Buscando a tu aliado");
     } else {
-      setHeardText("Quiero ser escuchado");
+      setHeardText("Buscar a un aliado");
     }
   }, [heardStatus]);
 
@@ -77,7 +77,7 @@ export default UserFeedScreen = (props) => {
       <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
       <TitleBarPosition
         style={{
-          backgroundColor: colors.white,
+          backgroundColor: colors.white
         }}
       >
         <TouchableOpacity>

@@ -18,12 +18,12 @@ const QuestionScreen = (props) => {
   const { navigation } = props;
   const [user, setUser] = React.useState({ token: "", data: {} });
 
-  const welcomeUser = () => {
-    navigation.navigate("UserWelcome");
+  const signUpVolunteer = () => {
+    navigation.navigate("VolunteerSignUp");
   };
 
-  const welcomeVolunteer = () => {
-    navigation.navigate("VolunteerWelcome");
+  const welcomeUser = () => {
+    navigation.navigate("UserWelcome");
   };
 
   React.useEffect(() => {
@@ -77,7 +77,7 @@ const QuestionScreen = (props) => {
             { color: colors.white, fontSize: 17, marginTop: 0 },
           ]}
         >
-          Cómo quieres usar la app?
+          Hola, qué quieres hacer?
         </Text>
         <TouchableOpacity
           style={[
@@ -101,10 +101,10 @@ const QuestionScreen = (props) => {
                 fontSize: 15,
               }}
             >
-              Quiero ser escuchado
+              Hablar con un voluntario
             </Text>
             <Icon
-              name="ios-medkit"
+              name="ios-chatbubbles"
               size={20}
               style={{
                 fontFamily: "Kastelov--Axiforma-Bold",
@@ -116,7 +116,7 @@ const QuestionScreen = (props) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.loginButton]}
-          onPress={() => welcomeVolunteer()}
+          onPress={() => signUpVolunteer()}
         >
           <View
             style={{
@@ -133,7 +133,7 @@ const QuestionScreen = (props) => {
                 fontSize: 15,
               }}
             >
-              Voluntario de la escucha
+              Ser voluntario
             </Text>
             <Icon
               name="ios-heart"

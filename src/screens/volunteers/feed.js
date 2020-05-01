@@ -188,7 +188,7 @@ const VolunteerFeedScreen = (props) => {
             marginBottom: 10,
           }}
         >
-          #PorMasEmpatia
+          #RedDeEmpatíaGlobal
         </Text>
 
         <Heroes text="" />
