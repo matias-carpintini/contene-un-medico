@@ -25,15 +25,32 @@ import bridge from "../../helpers/bridge";
 
 export default class UserProfileEditScreen extends React.Component {
   state = {
-    photo: require("../../assets/images/matias.png"),
+    imagen: null,
+    nacionalidad: null,
+    nombreYApellido: null,
+    correo: null,
+    domicilio: null,
+    telefono: null,
+    estudio: null,
+    edad: null,
+    trabajo: null,
+    rol: null,
+    estadoCivil: null,
+    hijos: null,
+    personasConvive: null,
+    personasCargo: null,
+    motivo: null,
   };
+
   back = () => {
     this.props.navigation.navigate("UserProfile");
   };
 
   submit = () => {
     this.props.navigation.navigate("UserProfile");
+    console.log("/////////", this.state);
   };
+
   //para fotografias
   _takePick2 = async () => {
     await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
@@ -57,6 +74,7 @@ export default class UserProfileEditScreen extends React.Component {
       this.setState({ image: result.uri });
     }
   };
+
   //para galeria (actual)
   _takePick = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -74,6 +92,9 @@ export default class UserProfileEditScreen extends React.Component {
       });
     });
   };
+
+  handleInputChange = (text, type) => this.setState({ [type]: text });
+
   render() {
     return (
       <SafeAreaView
@@ -151,7 +172,10 @@ export default class UserProfileEditScreen extends React.Component {
                     },
                   ]}
                   placeholder="Nombre y Apellido"
-                ></TextInput>
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "nombreYApellido")
+                  }
+                />
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
@@ -160,7 +184,10 @@ export default class UserProfileEditScreen extends React.Component {
                     { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Correo electrónico"
-                ></TextInput>
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "correo")
+                  }
+                />
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
@@ -169,7 +196,10 @@ export default class UserProfileEditScreen extends React.Component {
                     { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Domicilio"
-                ></TextInput>
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "domicilio")
+                  }
+                />
 
                 <TextInput
                   placeholderTextColor={colors.darkWhite}
@@ -178,7 +208,10 @@ export default class UserProfileEditScreen extends React.Component {
                     { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Teléfono de contacto"
-                ></TextInput>
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "telefono")
+                  }
+                />
 
                 <View
                   style={{
@@ -659,7 +692,10 @@ export default class UserProfileEditScreen extends React.Component {
                     { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Nivel de estudio"
-                ></TextInput>
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "estudio")
+                  }
+                />
 
                 <View
                   style={{
@@ -721,7 +757,10 @@ export default class UserProfileEditScreen extends React.Component {
                         { backgroundColor: colors.white },
                       ]}
                       placeholder="Edad"
-                    ></TextInput>
+                      onChangeText={(text) =>
+                        this.handleInputChange(text, "edad")
+                      }
+                    />
                   </View>
 
                   <View style={{ flex: 1 }}>
@@ -758,6 +797,9 @@ export default class UserProfileEditScreen extends React.Component {
                     { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Lugar de trabajo"
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "trabajo")
+                  }
                 />
 
                 <TextInput
@@ -767,6 +809,7 @@ export default class UserProfileEditScreen extends React.Component {
                     { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Puesto/rol"
+                  onChangeText={(text) => this.handleInputChange(text, "rol")}
                 />
 
                 <View style={{ flex: 1, flexDirection: "row", width: "100%" }}>
@@ -778,6 +821,9 @@ export default class UserProfileEditScreen extends React.Component {
                         { backgroundColor: colors.white },
                       ]}
                       placeholder="Estado civil"
+                      onChangeText={(text) =>
+                        this.handleInputChange(text, "estadoCivil")
+                      }
                     />
                   </View>
 
@@ -789,6 +835,9 @@ export default class UserProfileEditScreen extends React.Component {
                         { backgroundColor: colors.white, width: "100%" },
                       ]}
                       placeholder="Hijos"
+                      onChangeText={(text) =>
+                        this.handleInputChange(text, "hijos")
+                      }
                     />
                   </View>
                 </View>
@@ -800,6 +849,9 @@ export default class UserProfileEditScreen extends React.Component {
                     { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Nro de personas con las que convive"
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "personasConvive")
+                  }
                 />
 
                 <TextInput
@@ -809,6 +861,9 @@ export default class UserProfileEditScreen extends React.Component {
                     { backgroundColor: colors.white, width: "100%" },
                   ]}
                   placeholder="Personas a cargo"
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "personasCargo")
+                  }
                 />
 
                 <TextInput
@@ -821,6 +876,9 @@ export default class UserProfileEditScreen extends React.Component {
                   collapsable={true}
                   multiline
                   numberOfLines={4}
+                  onChangeText={(text) =>
+                    this.handleInputChange(text, "motivo")
+                  }
                 ></TextInput>
 
                 <View>
