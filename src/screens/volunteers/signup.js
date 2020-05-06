@@ -11,6 +11,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ActivityIndicator
 } from "react-native";
 import countries from "../../assets/strings/countries";
 import jobs from "../../assets/strings/jobs";
@@ -18,9 +19,11 @@ import languages from "../../assets/strings/languages";
 import bridge from "../../helpers/bridge";
 import colors from "../../styles/colors";
 import styles from "../../styles/styles";
+import help_reassons from "../../assets/strings/help_reassons";
 
 export default VolunteerSignUpScreen = (props) => {
   const [validateTerms, setValidateTerms] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
     full_name: "",
     level_of_studies: "",
@@ -37,10 +40,13 @@ export default VolunteerSignUpScreen = (props) => {
     resume: "",
     password: "",
     is_health_professional: false,
+    help_reasson: "",
+    network: ""
   });
 
   const submit = () => {
     if(formData.password.length < 6) return alert('La contraseña debe tener mínimo 6 caracteres');
+    setLoading(true);
     bridge.createUser(formData).then((response) => {
       if (response.status) {
         setItemAsync("user", JSON.stringify(response.User))
@@ -48,6 +54,7 @@ export default VolunteerSignUpScreen = (props) => {
           .then(() => props.navigation.navigate("VolunteerFeed"));
       } else {
         console.log("error", response);
+        setLoading(false);
       }
     });
   };
@@ -236,6 +243,7 @@ export default VolunteerSignUpScreen = (props) => {
                   >
                     <Picker
                       mode={Picker.MODE_DROPDOWN}
+                      style={{width: '100%', height: 48}} itemStyle={{height: 48}}
                       selectedValue={formData.gender}
                       onValueChange={(value) => {
                         setFormData({ ...formData, gender: value });
@@ -263,6 +271,7 @@ export default VolunteerSignUpScreen = (props) => {
                 }}
               >
                 <Picker
+                  style={{width: '100%', height: 48}} itemStyle={{height: 48}}
                   selectedValue={formData.lang}
                   onValueChange={(value) => {
                     setFormData({ ...formData, lang: value });
@@ -307,7 +316,6 @@ export default VolunteerSignUpScreen = (props) => {
               </View>
               <View
                 style={{
-                  marginTop: 20,
                   width: "90%",
                   justifyContent: "center",
                   backgroundColor: colors.smoke,
@@ -318,6 +326,7 @@ export default VolunteerSignUpScreen = (props) => {
                 }}
               >
                 <Picker
+                  style={{width: '100%', height: 48}} itemStyle={{height: 48}}
                   selectedValue={formData.nationality}
                   onValueChange={(value) => {
                     setFormData({ ...formData, nationality: value });
@@ -338,7 +347,6 @@ export default VolunteerSignUpScreen = (props) => {
               </View>
               <View
                 style={{
-                  marginTop: 20,
                   width: "90%",
                   justifyContent: "center",
                   backgroundColor: colors.smoke,
@@ -350,6 +358,7 @@ export default VolunteerSignUpScreen = (props) => {
               >
                 <Picker
                   mode={Picker.MODE_DROPDOWN}
+                  style={{width: '100%', height: 48}} itemStyle={{height: 48}}
                   selectedValue={formData.country}
                   onValueChange={(value) => {
                     setFormData({ ...formData, country: value });
@@ -393,7 +402,6 @@ export default VolunteerSignUpScreen = (props) => {
               </View>
               <View
                 style={{
-                  marginTop: 20,
                   width: "90%",
                   justifyContent: "center",
                   backgroundColor: colors.smoke,
@@ -405,6 +413,7 @@ export default VolunteerSignUpScreen = (props) => {
               >
                 <Picker
                   mode={Picker.MODE_DROPDOWN}
+                  style={{width: '100%', height: 48}} itemStyle={{height: 48}}
                   selectedValue={formData.profession}
                   onValueChange={(value) => {
                     setFormData({ ...formData, profession: value });
@@ -419,6 +428,58 @@ export default VolunteerSignUpScreen = (props) => {
                   ))}
                 </Picker>
               </View>
+
+                <View style={{ width: "90%" }}>
+                    <Text style={[styles.label]}>Razon de ayuda:</Text>
+                </View>
+                <View
+                    style={{
+                        width: "90%",
+                        justifyContent: "center",
+                        backgroundColor: colors.smoke,
+                        borderRadius: 10,
+                        height: 48,
+                        marginTop: 10,
+                        marginBottom: 20,
+                    }}
+                >
+                    <Picker
+                        mode={Picker.MODE_DROPDOWN}
+                        style={{width: '100%', height: 48}} itemStyle={{height: 48}}
+                        selectedValue={formData.help_reasson}
+                        onValueChange={(value) => {
+                            setFormData({ ...formData, help_reasson: value });
+                        }}
+                    >
+                        {help_reassons.map((job, index) => (
+                            <Picker.Item
+                                key={`job-item-${index}`}
+                                label={job.label}
+                                value={job.value}
+                            />
+                        ))}
+                    </Picker>
+                </View>
+
+                <View style={{ width: "90%" }}>
+                    <Text style={[styles.label]}>Network:</Text>
+                </View>
+                <TextInput
+                    placeholderTextColor={colors.darkWhite}
+                    style={[
+                        styles.loginInput,
+                        { backgroundColor: colors.smoke, marginTop: 10, marginBottom: 20, },
+                    ]}
+                    placeholder="Twitter, Facebook, etc"
+                    collapsable={true}
+                    value={formData.network}
+                    onChange={(event) =>
+                        setFormData({
+                            ...formData,
+                            network: event.nativeEvent.text,
+                        })
+                    }
+                />
 
               <View style={{ width: "90%" }}>
                 <Text style={[styles.label]}>Contraseña:</Text>
@@ -471,7 +532,6 @@ export default VolunteerSignUpScreen = (props) => {
                 <Text
                   style={{
                     fontFamily: "Kastelov--Axiforma-Bold",
-                    color: "white",
                     textAlign: "center",
                     fontSize: 15,
                     color: colors.white,
@@ -481,6 +541,13 @@ export default VolunteerSignUpScreen = (props) => {
                 </Text>
               </TouchableOpacity>
             </View>
+              {loading ?
+                      <View style={styles.loading}>
+                          <ActivityIndicator size="large" color="#000000" />
+                      </View>
+                : null
+              }
+
           </View>
           <View style={{ marginVertical: 10 }} />
         </ScrollView>
