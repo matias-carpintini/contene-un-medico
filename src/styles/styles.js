@@ -311,6 +311,15 @@ const styles = {
     width: "90%",
     color: colors.lightGray,
   },
+
+  loading: {
+    flex: 1,
+    marginTop: -120,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems:'center'
+    /* backgroundColor: 'black', */
+  }
 };
 
 export default styles;
