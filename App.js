@@ -23,8 +23,15 @@ import UserFeed from "./src/screens/users/feed";
 import UserProfile from "./src/screens/users/profile";
 import UserEdit from "./src/screens/users/edit";
 
+// notifications
+import { Notifications } from 'expo';
+
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
+import Constants from "expo-constants";
+import * as Permissions from "expo-permissions"
+
+import { Vibration } from "react-native";
 
 const Navigator = createStackNavigator(
   {
@@ -51,7 +58,8 @@ const Navigator = createStackNavigator(
 );
 
 export default class App extends React.Component {
-  state = { isLoading: true };
+  state = { isLoading: true, expoPushToken: null };
+  _notificationSubscription = null;
 
   componentDidMount = async () => {
     this.setState({ isLoading: true });
@@ -66,7 +74,65 @@ export default class App extends React.Component {
     });
 
     this.setState({ isLoading: false });
+    await this.registerForPushNotificationsAsync();
+    this._notificationSubscription = Notifications.addListener(this._handleNotification);
   };
+
+  registerForPushNotificationsAsync = async () => {
+        if (Constants.isDevice) {
+            const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+            let finalStatus = existingStatus;
+            if (existingStatus !== 'granted') {
+                const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+                finalStatus = status;
+            }
+            if (finalStatus !== 'granted') {
+                alert('Failed to get push token for push notification!');
+                return;
+            }
+            let token = await Notifications.getExpoPushTokenAsync();
+            console.log(token);
+            this.setState({ expoPushToken: token });
+        } else {
+            alert('Must use physical device for Push Notifications');
+        }
+
+        if (Platform.OS === 'android') {
+            await Notifications.createChannelAndroidAsync('default', {
+                name: 'default',
+                sound: true,
+                priority: 'max',
+                vibrate: [0, 250, 250, 250],
+            });
+        }
+  };
+
+  _handleNotification = notification => {
+        Vibration.vibrate();
+        console.log(notification);
+        this.setState({ notification: notification });
+  };
+
+   /*
+   sendPushNotification = async () => {
+        const message = {
+            to: this.state.expoPushToken,
+            sound: 'default',
+            title: 'Original Title',
+            body: 'And here is the body!',
+            data: { data: 'goes here' },
+            _displayInForeground: true,
+        };
+        const response = await fetch('https://exp.host/--/api/v2/push/send', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Accept-encoding': 'gzip, deflate',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(message),
+        });
+   };*/
 
   render() {
     /*
